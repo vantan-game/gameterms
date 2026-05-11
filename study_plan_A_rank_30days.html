@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GameTerms — 重要度A 83語 30日学習プラン</title>
+<style>
+  :root {
+    --bg: #0a0e1f;
+    --bg-card: #131a33;
+    --bg-row: #161e3a;
+    --bg-row-alt: #11172e;
+    --fg: #e6e8f0;
+    --fg-dim: #8a92ad;
+    --border: #232a4a;
+    --accent: #00d4ff;
+    --accent-2: #ff3df0;
+    --imp-A: #ff4757;
+    --done: #2ed573;
+    --review: #ffa502;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Segoe UI", sans-serif;
+    font-size: 13px;
+  }
+
+  /* ============ SCREEN VIEW ============ */
+  header {
+    padding: 20px 28px 16px;
+    background: linear-gradient(120deg, #0a0e1f 0%, #1a1f4a 100%);
+    border-bottom: 2px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px; letter-spacing: 0.08em; font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header .subtitle { color: var(--fg-dim); font-size: 12px; margin-top: 4px; }
+
+  nav.pages {
+    padding: 8px 28px; background: #0d1330;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: center; font-size: 12px;
+  }
+  nav.pages a {
+    color: var(--fg-dim); text-decoration: none;
+    padding: 4px 10px; border-radius: 4px; border: 1px solid transparent;
+  }
+  nav.pages a:hover { color: var(--accent); border-color: var(--border); }
+  nav.pages a.current { color: var(--accent); border-color: var(--accent); }
+
+  .controls {
+    padding: 12px 28px; background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  }
+  .btn {
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--accent); padding: 6px 14px;
+    border-radius: 4px; font-size: 12px; cursor: pointer;
+    font-family: inherit; letter-spacing: 0.05em;
+  }
+  .btn:hover { background: rgba(0,212,255,0.12); }
+  .btn.secondary { color: var(--fg-dim); border-color: var(--border); }
+  .btn.secondary:hover { color: var(--fg); border-color: var(--fg-dim); }
+  .btn.print {
+    background: var(--accent); color: #0a0e1f;
+    font-weight: 700; margin-left: auto;
+  }
+  .btn.print:hover { background: #00b8e0; }
+
+  .progress-strip {
+    padding: 12px 28px; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  }
+  .progress-bar-wrap { flex: 1 1 300px; min-width: 240px; }
+  .progress-bar {
+    height: 14px; background: #0d1330; border: 1px solid var(--border);
+    border-radius: 7px; overflow: hidden;
+  }
+  .progress-bar .fill { height: 100%; background: var(--done); transition: width 0.3s; }
+  .progress-text { font-size: 12px; color: var(--fg-dim); margin-top: 4px; }
+  .progress-text strong { color: var(--done); font-size: 14px; }
+  .strip-stat {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 12px; font-size: 12px;
+  }
+  .strip-stat .lbl { color: var(--fg-dim); font-size: 10px; }
+  .strip-stat .val { color: var(--fg); font-weight: 700; font-size: 16px; }
+
+  .page-container {
+    padding: 16px 28px 60px;
+    max-width: 1200px;
+  }
+
+  .info-box {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px; padding: 14px 18px; margin-bottom: 18px;
+    font-size: 12.5px; line-height: 1.7;
+  }
+  .info-box h2 { margin: 0 0 8px; font-size: 14px; color: var(--accent); letter-spacing: 0.05em; }
+  .info-box ul { margin: 6px 0 0 18px; padding: 0; }
+  .info-box li { margin-bottom: 2px; }
+
+  .plan-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card); border: 1px solid var(--border);
+  }
+  .plan-table thead th {
+    background: #0e1530; color: var(--fg-dim);
+    font-size: 11px; letter-spacing: 0.06em; font-weight: 600;
+    padding: 8px; text-align: left;
+    border-bottom: 1px solid var(--accent);
+  }
+  .plan-table tbody td {
+    padding: 7px 8px; border-bottom: 1px solid var(--border);
+    vertical-align: middle; font-size: 12.5px;
+  }
+  .plan-table tbody tr.day-row-first td.day-cell {
+    background: #0e1530; color: var(--fg);
+    font-weight: 700; text-align: center;
+    border-right: 1px solid var(--accent);
+  }
+  .plan-table tbody tr.day-row-first td.day-cell .d-num {
+    font-size: 18px; color: var(--accent);
+    font-family: "Consolas", monospace;
+    display: block;
+  }
+  .plan-table tbody tr.day-row-first td.day-cell .d-type {
+    font-size: 10px; color: var(--fg-dim);
+    margin-top: 2px; letter-spacing: 0.04em;
+  }
+  .plan-table tbody tr.review-row td.day-cell { background: rgba(255,165,2,0.18); }
+  .plan-table tbody tr.review-row td.day-cell .d-num { color: var(--review); }
+  .plan-table tbody tr.review-row .review-cell {
+    font-style: italic; color: var(--review); font-weight: 600;
+    padding: 12px 8px;
+  }
+  .plan-table tbody tr.day-completed { opacity: 0.55; }
+  .plan-table tbody tr.day-completed td.term-name {
+    text-decoration: line-through;
+    color: var(--fg-dim);
+  }
+
+  td.col-tid    { color: var(--fg-dim); font-family: "Consolas", monospace; width: 38px; font-size: 11px; }
+  td.term-name  { font-weight: 700; color: var(--fg); width: 170px; }
+  td.col-cat    { color: var(--fg-dim); font-size: 11px; width: 130px; }
+  td.col-batch  { width: 110px; }
+  td.col-pdf    { width: 250px; font-size: 11px; }
+  td.col-check  { width: 60px; text-align: center; }
+
+  .batch-link {
+    color: var(--accent); text-decoration: none;
+    font-family: "Consolas", monospace; font-size: 11px;
+    padding: 2px 8px; border: 1px solid var(--border);
+    border-radius: 3px; display: inline-block;
+  }
+  .batch-link:hover { border-color: var(--accent); background: rgba(0,212,255,0.1); }
+  .pdf-name { color: var(--fg-dim); font-family: "Consolas", monospace; font-size: 10.5px; }
+  .pdf-name a { color: var(--accent); text-decoration: none; }
+
+  .day-check {
+    width: 22px; height: 22px; cursor: pointer; vertical-align: middle;
+    accent-color: var(--done);
+  }
+
+  .week-divider {
+    background: linear-gradient(90deg, rgba(0,212,255,0.15), transparent) !important;
+  }
+  .week-divider td {
+    color: var(--accent); font-weight: 700; letter-spacing: 0.08em;
+    padding: 8px 10px !important; font-size: 11px;
+    border-top: 2px solid var(--accent) !important;
+    border-bottom: 1px solid var(--accent) !important;
+  }
+
+  /* ============ PRINT VIEW (A4 portrait) ============ */
+  @media print {
+    @page {
+      size: A4 portrait;
+      margin: 12mm 10mm 14mm;
+    }
+    nav.pages, .controls, .btn { display: none !important; }
+    html, body { background: #fff !important; color: #000 !important; font-size: 9pt; }
+    header {
+      background: #fff !important; color: #000 !important;
+      border-bottom: 2px solid #000;
+      padding: 4mm 0;
+    }
+    header h1 {
+      color: #000 !important; -webkit-text-fill-color: #000;
+      background: none; font-size: 16pt; letter-spacing: 0.02em;
+    }
+    header .subtitle { color: #444; }
+    .progress-strip { background: #fff !important; border-bottom: 1px solid #000; padding: 2mm 0; }
+    .progress-bar { background: #eee; border: 1px solid #000; }
+    .progress-bar .fill { background: #000; }
+    .progress-text { color: #000; }
+    .progress-text strong { color: #000; }
+    .strip-stat {
+      background: #fff !important; border: 1px solid #000;
+      color: #000;
+    }
+    .strip-stat .lbl, .strip-stat .val { color: #000; }
+    .page-container { padding: 0 !important; max-width: none; }
+    .info-box {
+      background: #fff !important; border: 1px solid #000 !important;
+      border-left: 3px solid #000 !important;
+      color: #000; padding: 3mm 4mm; margin-bottom: 4mm;
+      font-size: 8.5pt;
+    }
+    .info-box h2 { color: #000 !important; font-size: 10pt; }
+    .plan-table {
+      background: #fff !important; border: 1px solid #000;
+      font-size: 8.5pt;
+      page-break-inside: auto;
+    }
+    .plan-table thead { display: table-header-group; }
+    .plan-table thead th {
+      background: #ddd !important; color: #000 !important;
+      border-bottom: 1px solid #000;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .plan-table tbody tr { page-break-inside: avoid; }
+    .plan-table tbody tr.day-row-first td.day-cell {
+      background: #f0f0f0 !important; color: #000 !important;
+      border-right: 1px solid #000;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .plan-table tbody tr.day-row-first td.day-cell .d-num { color: #000 !important; }
+    .plan-table tbody tr.day-row-first td.day-cell .d-type { color: #444 !important; }
+    .plan-table tbody tr.review-row td.day-cell {
+      background: #fff5e0 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .plan-table tbody tr.review-row td.day-cell .d-num { color: #000 !important; }
+    .plan-table tbody tr.review-row .review-cell { color: #000 !important; font-style: italic; }
+    .plan-table tbody td {
+      color: #000 !important; padding: 3pt 4pt;
+      border-bottom: 1px solid #999;
+    }
+    .plan-table tbody tr.day-completed { opacity: 1; }
+    .plan-table tbody tr.day-completed td.term-name {
+      text-decoration: line-through; color: #777 !important;
+    }
+    td.col-tid, td.col-cat, td.pdf-name, td.col-pdf { color: #555 !important; }
+    .batch-link {
+      color: #000 !important; border: 1px solid #000;
+      background: #fff !important;
+    }
+    .pdf-name a { color: #000 !important; text-decoration: none; }
+    .week-divider {
+      background: #f5f5f5 !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .week-divider td {
+      color: #000 !important; border-top: 1px solid #000 !important;
+      border-bottom: 1px solid #000 !important; font-weight: 700;
+    }
+    .day-check { transform: scale(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>重要度A 83語 — 30日学習プラン</h1>
+  <div class="subtitle">1日 2〜3語の新規学習 + 復習日3回 + 最終総復習日。チェック状態は localStorage に自動保存されます。</div>
+</header>
+
+<nav class="pages">
+  <span style="color:var(--fg-dim)">📖</span>
+  <a href="study_dashboard.html">学習ダッシュボード</a>
+  <a href="category_index.html">カテゴリ別</a>
+  <a href="importance_index.html">重要度別</a>
+  <a href="study_plan_A_rank_30days.html" class="current">A 30日プラン</a>
+  <a href="terms_master.html">マスター一覧</a>
+</nav>
+
+<div class="controls">
+  <button class="btn secondary" id="btn-uncheck">全チェック解除</button>
+  <button class="btn secondary" id="btn-check-completed">「実戦で使える」状態と連動</button>
+  <a href="study_plan_A_rank_30days.csv" class="btn secondary" download>CSV版をダウンロード</a>
+  <button class="btn print" onclick="window.print()">🖨 印刷（A4縦）</button>
+</div>
+
+<div class="progress-strip">
+  <div class="progress-bar-wrap">
+    <div class="progress-bar"><div class="fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="progress-text"><strong id="prog-done">0</strong> / 30 日完了 — 用語ベース <strong id="prog-words">0</strong> / 83 語</div>
+  </div>
+  <div class="strip-stat"><div class="lbl">新規学習日</div><div class="val">27 日</div></div>
+  <div class="strip-stat"><div class="lbl">復習日</div><div class="val">3 日</div></div>
+  <div class="strip-stat"><div class="lbl">最終総復習</div><div class="val">Day 30</div></div>
+</div>
+
+<div class="page-container">
+
+  <div class="info-box">
+    <h2>📘 30日プランの設計方針</h2>
+    <ul>
+      <li><b>1日3語ペース</b>（最終日Day 30は新規2語＋全体総復習）。1日約20分の学習を想定。</li>
+      <li><b>復習日</b>は Day 10・Day 20・Day 30 の3回。直前9日分（または全体）を一気に確認するためのチェックポイント。</li>
+      <li><b>順序の意図</b>：Phase 1〜2 (Day 1-9) で企画とゲーム性の骨格 → Phase 3 (Day 11-19) で UI/UX・体験設計・意思決定 → Phase 4 (Day 21-29) で運営/KPI・分析・上級概念。</li>
+      <li><b>使う PDF は8つ</b>: <code>batch_001 / 002 / 003 / 004 / 005 / 013 / 018 / 028 / 038 / 048 / 058 / 078</code>（全A語をカバー）。各日の PDF 列のリンクから直接開けます。</li>
+      <li><b>進捗チェック</b>：右端のチェックボックスで「その日完了」を記録。<code>study_dashboard.html</code> 側の「実戦で使える」状態とも連携可能（「『実戦で使える』状態と連動」ボタン）。</li>
+    </ul>
+  </div>
+
+  <table class="plan-table" id="plan-table">
+    <thead>
+      <tr>
+        <th style="width:80px">Day</th>
+        <th style="width:38px">ID</th>
+        <th style="width:170px">用語</th>
+        <th style="width:130px">カテゴリ</th>
+        <th style="width:110px">batch</th>
+        <th style="width:230px">PDF ファイル名</th>
+        <th style="width:60px">完了</th>
+      </tr>
+    </thead>
+    <tbody id="plan-body"></tbody>
+  </table>
+
+</div>
+
+<script src="terms_data.js"></script>
+<script>
+  // ===== Schedule =====
+  const SCHEDULE = [
+    { day:  1, type: 'new', label: '新規 3語', termIds: ['001', '002', '092'], phaseStart: 'Phase 1: 企画の最上位概念（Day 1-9）' },
+    { day:  2, type: 'new', label: '新規 3語', termIds: ['003', '004', '005'] },
+    { day:  3, type: 'new', label: '新規 3語', termIds: ['009', '011', '033'] },
+    { day:  4, type: 'new', label: '新規 3語', termIds: ['008', '012', '013'] },
+    { day:  5, type: 'new', label: '新規 3語', termIds: ['042', '049', '056'] },
+    { day:  6, type: 'new', label: '新規 3語', termIds: ['050', '061', '063'] },
+    { day:  7, type: 'new', label: '新規 3語', termIds: ['065', '066', '094'] },
+    { day:  8, type: 'new', label: '新規 3語', termIds: ['091', '101', '353'] },
+    { day:  9, type: 'new', label: '新規 3語', termIds: ['130', '257', '359'] },
+    { day: 10, type: 'review', label: '復習', reviewRange: 'Days 1〜9', reviewDayIds: [1,2,3,4,5,6,7,8,9] },
+    { day: 11, type: 'new', label: '新規 3語', termIds: ['024', '025', '027'], phaseStart: 'Phase 2: UI/UX・体験設計・意思決定（Day 11-19）' },
+    { day: 12, type: 'new', label: '新規 3語', termIds: ['028', '171', '174'] },
+    { day: 13, type: 'new', label: '新規 3語', termIds: ['284', '018', '020'] },
+    { day: 14, type: 'new', label: '新規 3語', termIds: ['037', '017', '379'] },
+    { day: 15, type: 'new', label: '新規 3語', termIds: ['034', '035', '038'] },
+    { day: 16, type: 'new', label: '新規 3語', termIds: ['041', '151', '365'] },
+    { day: 17, type: 'new', label: '新規 3語', termIds: ['366', '474', '260'] },
+    { day: 18, type: 'new', label: '新規 3語', termIds: ['261', '458', '196'] },
+    { day: 19, type: 'new', label: '新規 3語', termIds: ['128', '508', '560'] },
+    { day: 20, type: 'review', label: '復習', reviewRange: 'Days 11〜19', reviewDayIds: [11,12,13,14,15,16,17,18,19] },
+    { day: 21, type: 'new', label: '新規 3語', termIds: ['402', '500', '601'], phaseStart: 'Phase 3: 運営・KPI・分析・上級（Day 21-29）' },
+    { day: 22, type: 'new', label: '新規 3語', termIds: ['071', '076', '070'] },
+    { day: 23, type: 'new', label: '新規 3語', termIds: ['074', '077', '208'] },
+    { day: 24, type: 'new', label: '新規 3語', termIds: ['211', '217', '420'] },
+    { day: 25, type: 'new', label: '新規 3語', termIds: ['518', '769', '081'] },
+    { day: 26, type: 'new', label: '新規 3語', termIds: ['082', '086', '347'] },
+    { day: 27, type: 'new', label: '新規 3語', termIds: ['541', '466', '574'] },
+    { day: 28, type: 'new', label: '新規 3語', termIds: ['325', '327', '428'] },
+    { day: 29, type: 'new', label: '新規 3語', termIds: ['528', '636', '755'] },
+    { day: 30, type: 'mixed', label: '新規2語+総復習', termIds: ['557', '762'], reviewRange: '全Day 1〜29 を最終復習', phaseStart: 'Phase 4: 仕上げ（Day 30）' }
+  ];
+
+  // ===== State =====
+  const COMP_KEY = 'gameterms_30day_completion';
+  const STATE_KEY = 'gameterms_v2';
+
+  function loadCompletion() { try { return JSON.parse(localStorage.getItem(COMP_KEY)) || {}; } catch { return {}; } }
+  function saveCompletion(map) { localStorage.setItem(COMP_KEY, JSON.stringify(map)); }
+  function loadStates() { try { return JSON.parse(localStorage.getItem(STATE_KEY)) || {}; } catch { return {}; } }
+
+  const completion = loadCompletion();
+
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  const termById = {};
+  for (const t of window.TERMS) termById[t.id] = t;
+
+  function pdfPath(batchId) {
+    if (!batchId) return null;
+    const info = window.BATCH_INFO[batchId];
+    return info ? info.pdf : null;
+  }
+  function pdfName(batchId) {
+    const p = pdfPath(batchId);
+    return p ? p.split('/').pop() : '—';
+  }
+
+  function renderRows() {
+    const tbody = document.getElementById('plan-body');
+    const rows = [];
+    for (const d of SCHEDULE) {
+      const completed = !!completion[d.day];
+
+      // Phase / week divider
+      if (d.phaseStart) {
+        rows.push('<tr class="week-divider"><td colspan="7">' + escHtml(d.phaseStart) + '</td></tr>');
+      }
+
+      if (d.type === 'review') {
+        rows.push('<tr class="day-row-first review-row' + (completed ? ' day-completed' : '') + '">');
+        rows.push('<td class="day-cell"><span class="d-num">Day ' + d.day + '</span><span class="d-type">' + escHtml(d.label) + '</span></td>');
+        rows.push('<td class="review-cell" colspan="5">' + escHtml(d.reviewRange) + ' で覚えた全用語を復習。各PDF を見直しながら、自分の言葉で説明できるか確認する。</td>');
+        rows.push('<td class="col-check"><input type="checkbox" class="day-check" data-day="' + d.day + '"' + (completed ? ' checked' : '') + '></td>');
+        rows.push('</tr>');
+        continue;
+      }
+
+      const ids = d.termIds;
+      ids.forEach((id, idx) => {
+        const t = termById[id];
+        if (!t) {
+          rows.push('<tr><td colspan="7" style="color:#f55">用語ID ' + escHtml(id) + ' が見つかりません</td></tr>');
+          return;
+        }
+        const pdf = pdfPath(t.batchId);
+        const isFirst = (idx === 0);
+        const rowClass = (isFirst ? 'day-row-first' : '') + (completed ? ' day-completed' : '');
+        rows.push('<tr class="' + rowClass + '">');
+        if (isFirst) {
+          rows.push('<td class="day-cell" rowspan="' + ids.length + '">');
+          rows.push('<span class="d-num">Day ' + d.day + '</span>');
+          rows.push('<span class="d-type">' + escHtml(d.label) + '</span>');
+          rows.push('</td>');
+        }
+        rows.push('<td class="col-tid">' + escHtml(t.id) + '</td>');
+        rows.push('<td class="term-name">' + escHtml(t.term) + '</td>');
+        rows.push('<td class="col-cat">' + escHtml(t.category) + '</td>');
+        if (pdf) {
+          rows.push('<td class="col-batch"><a class="batch-link" href="' + escHtml(pdf) + '" target="_blank">' + escHtml(t.batchId) + '</a></td>');
+          rows.push('<td class="pdf-name col-pdf"><a href="' + escHtml(pdf) + '" target="_blank">' + escHtml(pdf.split('/').pop()) + '</a></td>');
+        } else {
+          rows.push('<td class="col-batch" style="color:var(--fg-dim)">—</td>');
+          rows.push('<td class="col-pdf" style="color:var(--fg-dim)">—</td>');
+        }
+        if (isFirst) {
+          rows.push('<td class="col-check" rowspan="' + ids.length + '"><input type="checkbox" class="day-check" data-day="' + d.day + '"' + (completed ? ' checked' : '') + '></td>');
+        }
+        rows.push('</tr>');
+      });
+
+      // For mixed days (Day 30), append review row
+      if (d.type === 'mixed' && d.reviewRange) {
+        rows.push('<tr class="review-row' + (completed ? ' day-completed' : '') + '">');
+        rows.push('<td class="review-cell" colspan="5" style="border-top:1px dashed var(--review)">📚 ' + escHtml(d.reviewRange) + '。最終総復習として全 83 語を一気に通し、定着していない語を「復習中」に戻す。</td>');
+        rows.push('<td></td>');
+        rows.push('</tr>');
+      }
+    }
+    tbody.innerHTML = rows.join('');
+  }
+
+  function renderProgress() {
+    const total = 30;
+    const doneDays = SCHEDULE.filter(d => completion[d.day]).length;
+    document.getElementById('prog-done').textContent = doneDays;
+    document.getElementById('prog-fill').style.width = (doneDays / total * 100) + '%';
+
+    // Words covered = sum of termIds for completed new/mixed days
+    let words = 0;
+    for (const d of SCHEDULE) {
+      if (completion[d.day] && d.termIds) words += d.termIds.length;
+    }
+    document.getElementById('prog-words').textContent = words;
+  }
+
+  document.body.addEventListener('change', e => {
+    const cb = e.target.closest('.day-check');
+    if (!cb) return;
+    const day = parseInt(cb.dataset.day, 10);
+    if (cb.checked) completion[day] = true;
+    else delete completion[day];
+    saveCompletion(completion);
+    renderRows();
+    renderProgress();
+  });
+
+  document.getElementById('btn-uncheck').addEventListener('click', () => {
+    if (!confirm('30日プランの全チェックを解除しますか？（学習状態 v2 には影響しません）')) return;
+    Object.keys(completion).forEach(k => delete completion[k]);
+    saveCompletion(completion);
+    renderRows();
+    renderProgress();
+  });
+
+  document.getElementById('btn-check-completed').addEventListener('click', () => {
+    const states = loadStates();
+    let setCount = 0;
+    for (const d of SCHEDULE) {
+      if (d.type === 'review') continue;
+      if (!d.termIds) continue;
+      const allPractical = d.termIds.every(id => states[id] === 'practical');
+      if (allPractical) {
+        if (!completion[d.day]) setCount++;
+        completion[d.day] = true;
+      }
+    }
+    saveCompletion(completion);
+    renderRows();
+    renderProgress();
+    alert(setCount + ' 日を「完了」に更新しました（その日のすべての用語が「実戦で使える」状態のもの）。');
+  });
+
+  renderRows();
+  renderProgress();
+</script>
+</body>
+</html>

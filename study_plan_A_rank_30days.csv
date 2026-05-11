@@ -1,0 +1,221 @@
+﻿Day,種別,PhaseLabel,TermID,Term,Category,Importance,Batch,PDFファイル,PDFパス,短い意味
+1,新規,Phase 1: 企画の最上位概念,001,コンセプト,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームが「何のゲームで、誰のために、なぜ面白いのか」を一言で表した企画の核。
+1,新規,Phase 1: 企画の最上位概念,002,ゲームコンセプト,ゲーム企画,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,コンセプトをゲームの方向性・コア体験・差別化要素に落とし込んだもの。
+1,新規,Phase 1: 企画の最上位概念,092,企画書,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの目的・体験・仕様・差別化を、読み手に伝えるためのプランナーの主成果物。
+2,新規,Phase 1: 企画の最上位概念,003,ターゲットユーザー,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームを誰に遊んでほしいかを年齢・嗜好・プレイスタイルなどで定義した想定プレイヤー像。
+2,新規,Phase 1: 企画の最上位概念,004,ペルソナ,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ターゲットユーザーをさらに具体化した、架空の1人の人物像。名前・職業・遊び方まで設定する。
+2,新規,Phase 1: 企画の最上位概念,005,ゲームジャンル,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,アクション、RPG、パズル、シミュレーションなど、ゲームの基本形式の分類。
+3,新規,Phase 1: 企画の最上位概念,009,コアループ,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの中核で最も頻繁に繰り返される短いループ。コア体験を生み出す最小単位。
+3,新規,Phase 1: 企画の最上位概念,011,メカニクス,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーが行える行動と、それが起こすルールの仕組み(撃つ・ジャンプする・アイテム合成など)。
+3,新規,Phase 1: 企画の最上位概念,033,コア体験,プレイヤー体験,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーがそのゲームから得る、最も中核となる感情体験(爽快感・達成感・征服感など)。
+4,新規,Phase 1: 企画の最上位概念,008,ゲームループ,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,プレイヤーが繰り返す「行動 → 結果 → 報酬 → 次の行動」の一連の流れ。
+4,新規,Phase 1: 企画の最上位概念,012,ゲーム性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,そのゲーム独自の「遊んでいて面白い」感触を生む仕組みの総称。
+4,新規,Phase 1: 企画の最上位概念,013,リプレイ性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,クリア後やセッション後に、もう一度プレイしたくなる度合い。
+5,新規,Phase 1: 企画の最上位概念,042,ゲームシステム,ゲームシステム,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが触れるゲーム内の仕組み一式(戦闘、成長、経済、ミッションなど)の総称。
+5,新規,Phase 1: 企画の最上位概念,049,仕様書,開発工程,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの仕組み・画面・データを、開発者が実装できるレベルまで言語化した文書。
+5,新規,Phase 1: 企画の最上位概念,056,プロトタイプ,プロトタイプ・検証,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,面白さやコア体験が成立するか確認するための、簡素な検証用ビルド。
+6,新規,Phase 1: 企画の最上位概念,050,イテレーション,開発工程,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,作る → 試す → 直すを短いサイクルで繰り返す進め方。
+6,新規,Phase 1: 企画の最上位概念,061,プレイテスト,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,実プレイヤーに遊んでもらい、面白さ・難易度・操作などの体験を検証する作業。
+6,新規,Phase 1: 企画の最上位概念,063,バランス調整,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,難易度・パラメータ・経済などを調整し、適切な体験になるようにすること。
+7,新規,Phase 1: 企画の最上位概念,065,バグ,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プログラム・仕様の不具合により意図しない挙動が起きる現象。
+7,新規,Phase 1: 企画の最上位概念,066,QA,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,Quality Assurance。品質保証全般を担う工程・部署。
+7,新規,Phase 1: 企画の最上位概念,094,ゲームエンジン,Unity / 開発実装,A,batch_005,game_terms_batch_005.pdf,output/pdf/game_terms_batch_005.pdf,ゲーム制作に必要な機能をまとめた基盤ソフト(Unity、Unreal Engine など)。
+8,新規,Phase 1: 企画の最上位概念,091,ポートフォリオ,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,自分の制作物・企画・成果をまとめた作品集。
+8,新規,Phase 1: 企画の最上位概念,101,ピッチ,ゲーム企画,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,企画書を口頭・短時間でプレゼンする行為。10分以内に企画の本質を伝えるためのプレゼンテーション。
+8,新規,Phase 1: 企画の最上位概念,353,フック,ゲーム企画,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーの興味を最初に引きつける要素のこと。ゲームの第一印象を決め、プレイ継続の起点となる仕掛け。
+9,新規,Phase 1: 企画の最上位概念,130,ナラティブ,シナリオ・世界観,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内で語られる物語全体。プレイヤーが体験を通じて受け取るストーリー。
+9,新規,Phase 1: 企画の最上位概念,257,プレイスタイル,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,プレイヤーが好む遊び方の傾向。攻撃型・防御型・探索型・コレクション型など多様。
+9,新規,Phase 1: 企画の最上位概念,359,勝利条件,ゲームデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが『勝った』『達成した』と感じる条件のこと。ゲーム性の中心軸であり、設計の起点。
+10,復習,Phase 1 復習,001,コンセプト,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームが「何のゲームで、誰のために、なぜ面白いのか」を一言で表した企画の核。
+10,復習,Phase 1 復習,002,ゲームコンセプト,ゲーム企画,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,コンセプトをゲームの方向性・コア体験・差別化要素に落とし込んだもの。
+10,復習,Phase 1 復習,092,企画書,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの目的・体験・仕様・差別化を、読み手に伝えるためのプランナーの主成果物。
+10,復習,Phase 1 復習,003,ターゲットユーザー,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームを誰に遊んでほしいかを年齢・嗜好・プレイスタイルなどで定義した想定プレイヤー像。
+10,復習,Phase 1 復習,004,ペルソナ,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ターゲットユーザーをさらに具体化した、架空の1人の人物像。名前・職業・遊び方まで設定する。
+10,復習,Phase 1 復習,005,ゲームジャンル,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,アクション、RPG、パズル、シミュレーションなど、ゲームの基本形式の分類。
+10,復習,Phase 1 復習,009,コアループ,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの中核で最も頻繁に繰り返される短いループ。コア体験を生み出す最小単位。
+10,復習,Phase 1 復習,011,メカニクス,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーが行える行動と、それが起こすルールの仕組み(撃つ・ジャンプする・アイテム合成など)。
+10,復習,Phase 1 復習,033,コア体験,プレイヤー体験,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーがそのゲームから得る、最も中核となる感情体験(爽快感・達成感・征服感など)。
+10,復習,Phase 1 復習,008,ゲームループ,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,プレイヤーが繰り返す「行動 → 結果 → 報酬 → 次の行動」の一連の流れ。
+10,復習,Phase 1 復習,012,ゲーム性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,そのゲーム独自の「遊んでいて面白い」感触を生む仕組みの総称。
+10,復習,Phase 1 復習,013,リプレイ性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,クリア後やセッション後に、もう一度プレイしたくなる度合い。
+10,復習,Phase 1 復習,042,ゲームシステム,ゲームシステム,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが触れるゲーム内の仕組み一式(戦闘、成長、経済、ミッションなど)の総称。
+10,復習,Phase 1 復習,049,仕様書,開発工程,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの仕組み・画面・データを、開発者が実装できるレベルまで言語化した文書。
+10,復習,Phase 1 復習,056,プロトタイプ,プロトタイプ・検証,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,面白さやコア体験が成立するか確認するための、簡素な検証用ビルド。
+10,復習,Phase 1 復習,050,イテレーション,開発工程,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,作る → 試す → 直すを短いサイクルで繰り返す進め方。
+10,復習,Phase 1 復習,061,プレイテスト,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,実プレイヤーに遊んでもらい、面白さ・難易度・操作などの体験を検証する作業。
+10,復習,Phase 1 復習,063,バランス調整,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,難易度・パラメータ・経済などを調整し、適切な体験になるようにすること。
+10,復習,Phase 1 復習,065,バグ,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プログラム・仕様の不具合により意図しない挙動が起きる現象。
+10,復習,Phase 1 復習,066,QA,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,Quality Assurance。品質保証全般を担う工程・部署。
+10,復習,Phase 1 復習,094,ゲームエンジン,Unity / 開発実装,A,batch_005,game_terms_batch_005.pdf,output/pdf/game_terms_batch_005.pdf,ゲーム制作に必要な機能をまとめた基盤ソフト(Unity、Unreal Engine など)。
+10,復習,Phase 1 復習,091,ポートフォリオ,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,自分の制作物・企画・成果をまとめた作品集。
+10,復習,Phase 1 復習,101,ピッチ,ゲーム企画,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,企画書を口頭・短時間でプレゼンする行為。10分以内に企画の本質を伝えるためのプレゼンテーション。
+10,復習,Phase 1 復習,353,フック,ゲーム企画,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーの興味を最初に引きつける要素のこと。ゲームの第一印象を決め、プレイ継続の起点となる仕掛け。
+10,復習,Phase 1 復習,130,ナラティブ,シナリオ・世界観,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内で語られる物語全体。プレイヤーが体験を通じて受け取るストーリー。
+10,復習,Phase 1 復習,257,プレイスタイル,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,プレイヤーが好む遊び方の傾向。攻撃型・防御型・探索型・コレクション型など多様。
+10,復習,Phase 1 復習,359,勝利条件,ゲームデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが『勝った』『達成した』と感じる条件のこと。ゲーム性の中心軸であり、設計の起点。
+11,新規,Phase 2: UI/UX・体験設計・意思決定,024,UI,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが操作・情報取得をする画面表現の総称(ボタン、ゲージ、メニューなど)。
+11,新規,Phase 2: UI/UX・体験設計・意思決定,025,UX,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームに触れて感じる体験全体の質。UIだけでなく操作感や流れも含む。
+11,新規,Phase 2: UI/UX・体験設計・意思決定,027,ワイヤーフレーム,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,UIの骨組みを線と箱だけで描いた設計図。色・イラストは入れない。
+12,新規,Phase 2: UI/UX・体験設計・意思決定,028,ユーザーフロー,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが目的を達成するまでに通る画面・操作の流れ。
+12,新規,Phase 2: UI/UX・体験設計・意思決定,171,情報設計,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーに伝える情報の量・優先順位・配置を設計する作業。UI/UXの根幹。
+12,新規,Phase 2: UI/UX・体験設計・意思決定,174,操作性,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,ゲームの操作のしやすさ。ボタン配置・反応速度・直感性などで決まる総合的な使い心地。
+13,新規,Phase 2: UI/UX・体験設計・意思決定,284,ユーザビリティ,UI / UX,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,ユーザーが目的を達成しやすい度合いの総称。使いやすさ全般を指す指標。
+13,新規,Phase 2: UI/UX・体験設計・意思決定,018,レベルデザイン,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ステージ・マップ・敵配置・進行を通してプレイ体験の流れを設計する仕事。
+13,新規,Phase 2: UI/UX・体験設計・意思決定,020,難易度曲線,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,序盤から終盤にかけての難しさの上がり方の推移。
+14,新規,Phase 2: UI/UX・体験設計・意思決定,037,オンボーディング,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,初プレイヤーがゲームの基本を理解し、継続意欲を持つまでの導入体験全体。
+14,新規,Phase 2: UI/UX・体験設計・意思決定,017,チュートリアル,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,操作やルールをプレイヤーに教える導入のしくみ。
+14,新規,Phase 2: UI/UX・体験設計・意思決定,379,ティーチング,レベルデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,ステージや配置を通じてプレイヤーに自然にゲームの遊び方を教える設計手法のこと。説明文に頼らない学習設計。
+15,新規,Phase 2: UI/UX・体験設計・意思決定,034,フィードバック,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーの行動に対してゲームが返す反応(音・演出・数値変化など)。
+15,新規,Phase 2: UI/UX・体験設計・意思決定,035,リワード,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが行動の結果として得る報酬(経験値・アイテム・演出など)。
+15,新規,Phase 2: UI/UX・体験設計・意思決定,038,没入感,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが現実を忘れてゲーム世界に入り込んでいる感覚。
+16,新規,Phase 2: UI/UX・体験設計・意思決定,041,エンゲージメント,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームにどれだけ深く関わっているか。プレイ時間・頻度・愛着の総合指標。
+16,新規,Phase 2: UI/UX・体験設計・意思決定,151,プレイヤーモチベーション,プレイヤー体験,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーがゲームを続けたくなる動機・やる気の総称。報酬・達成感・好奇心など複数の源泉から生まれる。
+16,新規,Phase 2: UI/UX・体験設計・意思決定,365,フロー理論,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが集中して没頭する『フロー状態』を生む条件を体系化した心理学理論のこと。難易度とスキルのバランスが核。
+17,新規,Phase 2: UI/UX・体験設計・意思決定,366,感情曲線,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイ中のプレイヤーの感情の起伏を時間軸で描いた曲線のこと。緊張・緩和・達成の波を設計する。
+17,新規,Phase 2: UI/UX・体験設計・意思決定,474,期待形成,プレイヤー体験,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーに『次に何が起きるか』を予感させる演出設計のこと。緊張感・没入感の源となる。
+17,新規,Phase 2: UI/UX・体験設計・意思決定,260,ジレンマ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,どちらを選んでも代償がある選択肢を作るゲーム設計の核。意思決定の楽しさを生む。
+18,新規,Phase 2: UI/UX・体験設計・意思決定,261,トレードオフ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,何かを得るために何かを失う関係。「攻撃力高いが速度遅い」など設計判断の基本構造。
+18,新規,Phase 2: UI/UX・体験設計・意思決定,458,意味のある選択,ゲームデザイン,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーの選択肢が結果に影響する設計のこと。Sid Meierの『ゲームとは興味深い選択の連続』の核心概念。
+18,新規,Phase 2: UI/UX・体験設計・意思決定,196,経験値,報酬設計,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーキャラクターが成長するために貯める数値。レベルアップの基本リソース。
+19,新規,Phase 2: UI/UX・体験設計・意思決定,128,経済設計,報酬設計,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内通貨・アイテム・報酬の流れを設計すること。インフレ・デフレを管理する。
+19,新規,Phase 2: UI/UX・体験設計・意思決定,508,成長曲線,報酬設計,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーキャラの強さがプレイ時間に対してどう上昇するかを示す曲線のこと。育成設計の根幹。
+19,新規,Phase 2: UI/UX・体験設計・意思決定,560,習慣化設計,ゲームデザイン,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,プレイヤーが無意識にゲームを遊ぶ習慣を作る設計のこと。デイリー任務・ログインボーナスなど運営型タイトルの中核。
+20,復習,Phase 2 復習,024,UI,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが操作・情報取得をする画面表現の総称(ボタン、ゲージ、メニューなど)。
+20,復習,Phase 2 復習,025,UX,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームに触れて感じる体験全体の質。UIだけでなく操作感や流れも含む。
+20,復習,Phase 2 復習,027,ワイヤーフレーム,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,UIの骨組みを線と箱だけで描いた設計図。色・イラストは入れない。
+20,復習,Phase 2 復習,028,ユーザーフロー,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが目的を達成するまでに通る画面・操作の流れ。
+20,復習,Phase 2 復習,171,情報設計,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーに伝える情報の量・優先順位・配置を設計する作業。UI/UXの根幹。
+20,復習,Phase 2 復習,174,操作性,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,ゲームの操作のしやすさ。ボタン配置・反応速度・直感性などで決まる総合的な使い心地。
+20,復習,Phase 2 復習,284,ユーザビリティ,UI / UX,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,ユーザーが目的を達成しやすい度合いの総称。使いやすさ全般を指す指標。
+20,復習,Phase 2 復習,018,レベルデザイン,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ステージ・マップ・敵配置・進行を通してプレイ体験の流れを設計する仕事。
+20,復習,Phase 2 復習,020,難易度曲線,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,序盤から終盤にかけての難しさの上がり方の推移。
+20,復習,Phase 2 復習,037,オンボーディング,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,初プレイヤーがゲームの基本を理解し、継続意欲を持つまでの導入体験全体。
+20,復習,Phase 2 復習,017,チュートリアル,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,操作やルールをプレイヤーに教える導入のしくみ。
+20,復習,Phase 2 復習,379,ティーチング,レベルデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,ステージや配置を通じてプレイヤーに自然にゲームの遊び方を教える設計手法のこと。説明文に頼らない学習設計。
+20,復習,Phase 2 復習,034,フィードバック,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーの行動に対してゲームが返す反応(音・演出・数値変化など)。
+20,復習,Phase 2 復習,035,リワード,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが行動の結果として得る報酬(経験値・アイテム・演出など)。
+20,復習,Phase 2 復習,038,没入感,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが現実を忘れてゲーム世界に入り込んでいる感覚。
+20,復習,Phase 2 復習,041,エンゲージメント,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームにどれだけ深く関わっているか。プレイ時間・頻度・愛着の総合指標。
+20,復習,Phase 2 復習,151,プレイヤーモチベーション,プレイヤー体験,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーがゲームを続けたくなる動機・やる気の総称。報酬・達成感・好奇心など複数の源泉から生まれる。
+20,復習,Phase 2 復習,365,フロー理論,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが集中して没頭する『フロー状態』を生む条件を体系化した心理学理論のこと。難易度とスキルのバランスが核。
+20,復習,Phase 2 復習,366,感情曲線,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイ中のプレイヤーの感情の起伏を時間軸で描いた曲線のこと。緊張・緩和・達成の波を設計する。
+20,復習,Phase 2 復習,474,期待形成,プレイヤー体験,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーに『次に何が起きるか』を予感させる演出設計のこと。緊張感・没入感の源となる。
+20,復習,Phase 2 復習,260,ジレンマ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,どちらを選んでも代償がある選択肢を作るゲーム設計の核。意思決定の楽しさを生む。
+20,復習,Phase 2 復習,261,トレードオフ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,何かを得るために何かを失う関係。「攻撃力高いが速度遅い」など設計判断の基本構造。
+20,復習,Phase 2 復習,458,意味のある選択,ゲームデザイン,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーの選択肢が結果に影響する設計のこと。Sid Meierの『ゲームとは興味深い選択の連続』の核心概念。
+20,復習,Phase 2 復習,196,経験値,報酬設計,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーキャラクターが成長するために貯める数値。レベルアップの基本リソース。
+20,復習,Phase 2 復習,128,経済設計,報酬設計,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内通貨・アイテム・報酬の流れを設計すること。インフレ・デフレを管理する。
+20,復習,Phase 2 復習,508,成長曲線,報酬設計,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーキャラの強さがプレイ時間に対してどう上昇するかを示す曲線のこと。育成設計の根幹。
+20,復習,Phase 2 復習,560,習慣化設計,ゲームデザイン,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,プレイヤーが無意識にゲームを遊ぶ習慣を作る設計のこと。デイリー任務・ログインボーナスなど運営型タイトルの中核。
+21,新規,Phase 3: 運営・KPI・分析・上級,402,攻撃予兆,バトル設計,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,敵が攻撃する前にプレイヤーに知らせる視覚・音響演出のこと。フェアな戦闘設計の中核要素。
+21,新規,Phase 3: 運営・KPI・分析・上級,500,攻撃設計,バトル設計,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,キャラ・敵・武器の攻撃の挙動・威力・範囲・隙を設計する作業のこと。戦闘の質を決める根幹。
+21,新規,Phase 3: 運営・KPI・分析・上級,601,戦闘テンポ,バトル設計,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,戦闘中の進行速度・リズムのこと。攻撃・回避・反撃のサイクルが体感する戦闘の質を決める。
+22,新規,Phase 3: 運営・KPI・分析・上級,071,KPI,運営・KPI,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,Key Performance Indicator。運営の良し悪しを判断する重要指標群。
+22,新規,Phase 3: 運営・KPI・分析・上級,076,継続率,運営・KPI,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,初回起動から N 日後にどれだけのプレイヤーが戻ってきたかの割合。
+22,新規,Phase 3: 運営・KPI・分析・上級,070,リテンション,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーがゲームを継続して遊んでくれる度合い。一般に1日後・7日後・30日後で測る。
+23,新規,Phase 3: 運営・KPI・分析・上級,074,DAU,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,Daily Active Users。1日にゲームを起動・プレイしたユニークユーザー数。
+23,新規,Phase 3: 運営・KPI・分析・上級,077,離脱率,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーがゲームをやめた割合。日次・チュートリアル単位など複数の切り口がある。
+23,新規,Phase 3: 運営・KPI・分析・上級,208,チャーン,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーが完全に離脱する現象。チャーン率は離脱率と同義の英語語彙。
+24,新規,Phase 3: 運営・KPI・分析・上級,211,課金率,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,全プレイヤーのうち課金しているプレイヤーの割合。マネタイズの健全性を測る指標。
+24,新規,Phase 3: 運営・KPI・分析・上級,217,初日継続率,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,リリース日にDLしたユーザーが翌日も戻ってきた割合。D1継続率の最初期版。
+24,新規,Phase 3: 運営・KPI・分析・上級,420,FTUE,運営・KPI,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,First Time User Experienceの略。初めて遊ぶプレイヤーの初回体験全体のこと。継続率を最大に左右する。
+25,新規,Phase 3: 運営・KPI・分析・上級,518,KPIツリー,運営・KPI,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,主要KPI（売上・DAU等）を上位から下位指標へ階層化した設計図のこと。改善ボトルネック特定に使う。
+25,新規,Phase 3: 運営・KPI・分析・上級,769,North Star Metric,運営・KPI,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,事業の成功を最も象徴する単一の指標のこと。KPIツリーの頂点に置くべき指標。
+25,新規,Phase 3: 運営・KPI・分析・上級,081,マネタイズ,マネタイズ,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーから収益を得る仕組みの設計。買い切り・課金・広告・サブスクなど。
+26,新規,Phase 3: 運営・KPI・分析・上級,082,ガチャ,マネタイズ,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,ランダムでアイテム・キャラを獲得する課金/報酬システム。
+26,新規,Phase 3: 運営・KPI・分析・上級,086,課金,マネタイズ,A,batch_005,game_terms_batch_005.pdf,output/pdf/game_terms_batch_005.pdf,プレイヤーがゲーム内アイテム・サービスに対価を支払う行為。
+26,新規,Phase 3: 運営・KPI・分析・上級,347,パブリッシャー,パブリッシング,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,ゲームの販売・マーケ・ローカライズなどを担う事業会社。デベロッパーと組む形が一般的。
+27,新規,Phase 3: 運営・KPI・分析・上級,541,ターゲット市場,マーケティング,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,ゲームを売る相手の市場（地域・年齢・嗜好等）のこと。マーケ施策の根幹となる前提情報。
+27,新規,Phase 3: 運営・KPI・分析・上級,466,比較分析,ゲーム分析,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,2つ以上のゲーム・要素を並べて差異を抽出する分析手法のこと。企画書・面接で必須の分析スキル。
+27,新規,Phase 3: 運営・KPI・分析・上級,574,課題抽出,ゲーム分析,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,現状の問題点・改善余地を整理して言語化する作業のこと。改善提案・企画立案の起点となる分析スキル。
+28,新規,Phase 3: 運営・KPI・分析・上級,325,ロードマップ,プロジェクト管理,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,プロジェクト全体の長期計画。マイルストーンとリリース予定を時系列で示した文書。
+28,新規,Phase 3: 運営・KPI・分析・上級,327,スクラム,プロジェクト管理,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,アジャイル開発の代表的な手法。スプリント・デイリーミーティング・レトロスペクティブで構成。
+28,新規,Phase 3: 運営・KPI・分析・上級,428,プリプロダクション,開発工程,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,本格開発前の企画・プロトタイプ・検証フェーズのこと。方向性を固めて量産フェーズに入る前段階。
+29,新規,Phase 3: 運営・KPI・分析・上級,528,仕様レビュー,開発工程,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,作成した仕様書を関係者で確認・指摘する会議のこと。実装前の品質ゲートとして機能する。
+29,新規,Phase 3: 運営・KPI・分析・上級,636,再現手順,QA / デバッグ,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,バグを再発生させるための具体的な操作手順のこと。バグレポートの中核情報。
+29,新規,Phase 3: 運営・KPI・分析・上級,755,仕様意図,開発工程,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,仕様書の各項目が『なぜそう書かれているか』の意図のこと。実装判断のブレを防ぐ。
+30,新規,Phase 4: 仕上げ + 全体総復習,557,企画意図,ゲーム企画,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,なぜこの企画を作るのか、何を実現したいのかという開発目的のこと。企画書の根幹となる思想。
+30,新規,Phase 4: 仕上げ + 全体総復習,762,Postmortem,開発工程,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,プロジェクト終了後に実施する振り返り会のこと。何が良かった・悪かったを組織として学ぶ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,001,コンセプト,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームが「何のゲームで、誰のために、なぜ面白いのか」を一言で表した企画の核。
+30,総復習,Phase 4: 仕上げ + 全体総復習,002,ゲームコンセプト,ゲーム企画,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,コンセプトをゲームの方向性・コア体験・差別化要素に落とし込んだもの。
+30,総復習,Phase 4: 仕上げ + 全体総復習,003,ターゲットユーザー,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,このゲームを誰に遊んでほしいかを年齢・嗜好・プレイスタイルなどで定義した想定プレイヤー像。
+30,総復習,Phase 4: 仕上げ + 全体総復習,004,ペルソナ,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ターゲットユーザーをさらに具体化した、架空の1人の人物像。名前・職業・遊び方まで設定する。
+30,総復習,Phase 4: 仕上げ + 全体総復習,005,ゲームジャンル,ゲーム企画,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,アクション、RPG、パズル、シミュレーションなど、ゲームの基本形式の分類。
+30,総復習,Phase 4: 仕上げ + 全体総復習,008,ゲームループ,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,プレイヤーが繰り返す「行動 → 結果 → 報酬 → 次の行動」の一連の流れ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,009,コアループ,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの中核で最も頻繁に繰り返される短いループ。コア体験を生み出す最小単位。
+30,総復習,Phase 4: 仕上げ + 全体総復習,011,メカニクス,ゲームデザイン,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーが行える行動と、それが起こすルールの仕組み(撃つ・ジャンプする・アイテム合成など)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,012,ゲーム性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,そのゲーム独自の「遊んでいて面白い」感触を生む仕組みの総称。
+30,総復習,Phase 4: 仕上げ + 全体総復習,013,リプレイ性,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,クリア後やセッション後に、もう一度プレイしたくなる度合い。
+30,総復習,Phase 4: 仕上げ + 全体総復習,017,チュートリアル,ゲームデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,操作やルールをプレイヤーに教える導入のしくみ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,018,レベルデザイン,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,ステージ・マップ・敵配置・進行を通してプレイ体験の流れを設計する仕事。
+30,総復習,Phase 4: 仕上げ + 全体総復習,020,難易度曲線,レベルデザイン,A,batch_002,game_terms_batch_002.pdf,output/pdf/game_terms_batch_002.pdf,序盤から終盤にかけての難しさの上がり方の推移。
+30,総復習,Phase 4: 仕上げ + 全体総復習,024,UI,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが操作・情報取得をする画面表現の総称(ボタン、ゲージ、メニューなど)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,025,UX,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームに触れて感じる体験全体の質。UIだけでなく操作感や流れも含む。
+30,総復習,Phase 4: 仕上げ + 全体総復習,027,ワイヤーフレーム,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,UIの骨組みを線と箱だけで描いた設計図。色・イラストは入れない。
+30,総復習,Phase 4: 仕上げ + 全体総復習,028,ユーザーフロー,UI / UX,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが目的を達成するまでに通る画面・操作の流れ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,033,コア体験,プレイヤー体験,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,プレイヤーがそのゲームから得る、最も中核となる感情体験(爽快感・達成感・征服感など)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,034,フィードバック,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーの行動に対してゲームが返す反応(音・演出・数値変化など)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,035,リワード,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが行動の結果として得る報酬(経験値・アイテム・演出など)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,037,オンボーディング,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,初プレイヤーがゲームの基本を理解し、継続意欲を持つまでの導入体験全体。
+30,総復習,Phase 4: 仕上げ + 全体総復習,038,没入感,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが現実を忘れてゲーム世界に入り込んでいる感覚。
+30,総復習,Phase 4: 仕上げ + 全体総復習,041,エンゲージメント,プレイヤー体験,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーがゲームにどれだけ深く関わっているか。プレイ時間・頻度・愛着の総合指標。
+30,総復習,Phase 4: 仕上げ + 全体総復習,042,ゲームシステム,ゲームシステム,A,batch_003,game_terms_batch_003.pdf,output/pdf/game_terms_batch_003.pdf,プレイヤーが触れるゲーム内の仕組み一式(戦闘、成長、経済、ミッションなど)の総称。
+30,総復習,Phase 4: 仕上げ + 全体総復習,049,仕様書,開発工程,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの仕組み・画面・データを、開発者が実装できるレベルまで言語化した文書。
+30,総復習,Phase 4: 仕上げ + 全体総復習,050,イテレーション,開発工程,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,作る → 試す → 直すを短いサイクルで繰り返す進め方。
+30,総復習,Phase 4: 仕上げ + 全体総復習,056,プロトタイプ,プロトタイプ・検証,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,面白さやコア体験が成立するか確認するための、簡素な検証用ビルド。
+30,総復習,Phase 4: 仕上げ + 全体総復習,061,プレイテスト,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,実プレイヤーに遊んでもらい、面白さ・難易度・操作などの体験を検証する作業。
+30,総復習,Phase 4: 仕上げ + 全体総復習,063,バランス調整,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,難易度・パラメータ・経済などを調整し、適切な体験になるようにすること。
+30,総復習,Phase 4: 仕上げ + 全体総復習,065,バグ,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プログラム・仕様の不具合により意図しない挙動が起きる現象。
+30,総復習,Phase 4: 仕上げ + 全体総復習,066,QA,テスト・改善,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,Quality Assurance。品質保証全般を担う工程・部署。
+30,総復習,Phase 4: 仕上げ + 全体総復習,070,リテンション,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーがゲームを継続して遊んでくれる度合い。一般に1日後・7日後・30日後で測る。
+30,総復習,Phase 4: 仕上げ + 全体総復習,071,KPI,運営・KPI,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,Key Performance Indicator。運営の良し悪しを判断する重要指標群。
+30,総復習,Phase 4: 仕上げ + 全体総復習,074,DAU,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,Daily Active Users。1日にゲームを起動・プレイしたユニークユーザー数。
+30,総復習,Phase 4: 仕上げ + 全体総復習,076,継続率,運営・KPI,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,初回起動から N 日後にどれだけのプレイヤーが戻ってきたかの割合。
+30,総復習,Phase 4: 仕上げ + 全体総復習,077,離脱率,運営・KPI,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーがゲームをやめた割合。日次・チュートリアル単位など複数の切り口がある。
+30,総復習,Phase 4: 仕上げ + 全体総復習,081,マネタイズ,マネタイズ,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,プレイヤーから収益を得る仕組みの設計。買い切り・課金・広告・サブスクなど。
+30,総復習,Phase 4: 仕上げ + 全体総復習,082,ガチャ,マネタイズ,A,batch_004,game_terms_batch_004.pdf,output/pdf/game_terms_batch_004.pdf,ランダムでアイテム・キャラを獲得する課金/報酬システム。
+30,総復習,Phase 4: 仕上げ + 全体総復習,086,課金,マネタイズ,A,batch_005,game_terms_batch_005.pdf,output/pdf/game_terms_batch_005.pdf,プレイヤーがゲーム内アイテム・サービスに対価を支払う行為。
+30,総復習,Phase 4: 仕上げ + 全体総復習,091,ポートフォリオ,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,自分の制作物・企画・成果をまとめた作品集。
+30,総復習,Phase 4: 仕上げ + 全体総復習,092,企画書,ポートフォリオ・面接,A,batch_001,game_terms_batch_001.pdf,output/pdf/game_terms_batch_001.pdf,ゲームの目的・体験・仕様・差別化を、読み手に伝えるためのプランナーの主成果物。
+30,総復習,Phase 4: 仕上げ + 全体総復習,094,ゲームエンジン,Unity / 開発実装,A,batch_005,game_terms_batch_005.pdf,output/pdf/game_terms_batch_005.pdf,ゲーム制作に必要な機能をまとめた基盤ソフト(Unity、Unreal Engine など)。
+30,総復習,Phase 4: 仕上げ + 全体総復習,101,ピッチ,ゲーム企画,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,企画書を口頭・短時間でプレゼンする行為。10分以内に企画の本質を伝えるためのプレゼンテーション。
+30,総復習,Phase 4: 仕上げ + 全体総復習,128,経済設計,報酬設計,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内通貨・アイテム・報酬の流れを設計すること。インフレ・デフレを管理する。
+30,総復習,Phase 4: 仕上げ + 全体総復習,130,ナラティブ,シナリオ・世界観,A,batch_013,game_terms_batch_013.pdf,output/pdf/game_terms_batch_013.pdf,ゲーム内で語られる物語全体。プレイヤーが体験を通じて受け取るストーリー。
+30,総復習,Phase 4: 仕上げ + 全体総復習,151,プレイヤーモチベーション,プレイヤー体験,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーがゲームを続けたくなる動機・やる気の総称。報酬・達成感・好奇心など複数の源泉から生まれる。
+30,総復習,Phase 4: 仕上げ + 全体総復習,171,情報設計,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーに伝える情報の量・優先順位・配置を設計する作業。UI/UXの根幹。
+30,総復習,Phase 4: 仕上げ + 全体総復習,174,操作性,UI / UX,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,ゲームの操作のしやすさ。ボタン配置・反応速度・直感性などで決まる総合的な使い心地。
+30,総復習,Phase 4: 仕上げ + 全体総復習,196,経験値,報酬設計,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーキャラクターが成長するために貯める数値。レベルアップの基本リソース。
+30,総復習,Phase 4: 仕上げ + 全体総復習,208,チャーン,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,プレイヤーが完全に離脱する現象。チャーン率は離脱率と同義の英語語彙。
+30,総復習,Phase 4: 仕上げ + 全体総復習,211,課金率,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,全プレイヤーのうち課金しているプレイヤーの割合。マネタイズの健全性を測る指標。
+30,総復習,Phase 4: 仕上げ + 全体総復習,217,初日継続率,運営・KPI,A,batch_018,game_terms_batch_018.pdf,output/pdf/game_terms_batch_018.pdf,リリース日にDLしたユーザーが翌日も戻ってきた割合。D1継続率の最初期版。
+30,総復習,Phase 4: 仕上げ + 全体総復習,257,プレイスタイル,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,プレイヤーが好む遊び方の傾向。攻撃型・防御型・探索型・コレクション型など多様。
+30,総復習,Phase 4: 仕上げ + 全体総復習,260,ジレンマ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,どちらを選んでも代償がある選択肢を作るゲーム設計の核。意思決定の楽しさを生む。
+30,総復習,Phase 4: 仕上げ + 全体総復習,261,トレードオフ,ゲームデザイン,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,何かを得るために何かを失う関係。「攻撃力高いが速度遅い」など設計判断の基本構造。
+30,総復習,Phase 4: 仕上げ + 全体総復習,284,ユーザビリティ,UI / UX,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,ユーザーが目的を達成しやすい度合いの総称。使いやすさ全般を指す指標。
+30,総復習,Phase 4: 仕上げ + 全体総復習,325,ロードマップ,プロジェクト管理,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,プロジェクト全体の長期計画。マイルストーンとリリース予定を時系列で示した文書。
+30,総復習,Phase 4: 仕上げ + 全体総復習,327,スクラム,プロジェクト管理,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,アジャイル開発の代表的な手法。スプリント・デイリーミーティング・レトロスペクティブで構成。
+30,総復習,Phase 4: 仕上げ + 全体総復習,347,パブリッシャー,パブリッシング,A,batch_028,game_terms_batch_028.pdf,output/pdf/game_terms_batch_028.pdf,ゲームの販売・マーケ・ローカライズなどを担う事業会社。デベロッパーと組む形が一般的。
+30,総復習,Phase 4: 仕上げ + 全体総復習,353,フック,ゲーム企画,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーの興味を最初に引きつける要素のこと。ゲームの第一印象を決め、プレイ継続の起点となる仕掛け。
+30,総復習,Phase 4: 仕上げ + 全体総復習,359,勝利条件,ゲームデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが『勝った』『達成した』と感じる条件のこと。ゲーム性の中心軸であり、設計の起点。
+30,総復習,Phase 4: 仕上げ + 全体総復習,365,フロー理論,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイヤーが集中して没頭する『フロー状態』を生む条件を体系化した心理学理論のこと。難易度とスキルのバランスが核。
+30,総復習,Phase 4: 仕上げ + 全体総復習,366,感情曲線,プレイヤー体験,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,プレイ中のプレイヤーの感情の起伏を時間軸で描いた曲線のこと。緊張・緩和・達成の波を設計する。
+30,総復習,Phase 4: 仕上げ + 全体総復習,379,ティーチング,レベルデザイン,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,ステージや配置を通じてプレイヤーに自然にゲームの遊び方を教える設計手法のこと。説明文に頼らない学習設計。
+30,総復習,Phase 4: 仕上げ + 全体総復習,402,攻撃予兆,バトル設計,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,敵が攻撃する前にプレイヤーに知らせる視覚・音響演出のこと。フェアな戦闘設計の中核要素。
+30,総復習,Phase 4: 仕上げ + 全体総復習,420,FTUE,運営・KPI,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,First Time User Experienceの略。初めて遊ぶプレイヤーの初回体験全体のこと。継続率を最大に左右する。
+30,総復習,Phase 4: 仕上げ + 全体総復習,428,プリプロダクション,開発工程,A,batch_038,game_terms_batch_038.pdf,output/pdf/game_terms_batch_038.pdf,本格開発前の企画・プロトタイプ・検証フェーズのこと。方向性を固めて量産フェーズに入る前段階。
+30,総復習,Phase 4: 仕上げ + 全体総復習,458,意味のある選択,ゲームデザイン,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーの選択肢が結果に影響する設計のこと。Sid Meierの『ゲームとは興味深い選択の連続』の核心概念。
+30,総復習,Phase 4: 仕上げ + 全体総復習,466,比較分析,ゲーム分析,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,2つ以上のゲーム・要素を並べて差異を抽出する分析手法のこと。企画書・面接で必須の分析スキル。
+30,総復習,Phase 4: 仕上げ + 全体総復習,474,期待形成,プレイヤー体験,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーに『次に何が起きるか』を予感させる演出設計のこと。緊張感・没入感の源となる。
+30,総復習,Phase 4: 仕上げ + 全体総復習,500,攻撃設計,バトル設計,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,キャラ・敵・武器の攻撃の挙動・威力・範囲・隙を設計する作業のこと。戦闘の質を決める根幹。
+30,総復習,Phase 4: 仕上げ + 全体総復習,508,成長曲線,報酬設計,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,プレイヤーキャラの強さがプレイ時間に対してどう上昇するかを示す曲線のこと。育成設計の根幹。
+30,総復習,Phase 4: 仕上げ + 全体総復習,518,KPIツリー,運営・KPI,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,主要KPI（売上・DAU等）を上位から下位指標へ階層化した設計図のこと。改善ボトルネック特定に使う。
+30,総復習,Phase 4: 仕上げ + 全体総復習,528,仕様レビュー,開発工程,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,作成した仕様書を関係者で確認・指摘する会議のこと。実装前の品質ゲートとして機能する。
+30,総復習,Phase 4: 仕上げ + 全体総復習,541,ターゲット市場,マーケティング,A,batch_048,game_terms_batch_048.pdf,output/pdf/game_terms_batch_048.pdf,ゲームを売る相手の市場（地域・年齢・嗜好等）のこと。マーケ施策の根幹となる前提情報。
+30,総復習,Phase 4: 仕上げ + 全体総復習,557,企画意図,ゲーム企画,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,なぜこの企画を作るのか、何を実現したいのかという開発目的のこと。企画書の根幹となる思想。
+30,総復習,Phase 4: 仕上げ + 全体総復習,560,習慣化設計,ゲームデザイン,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,プレイヤーが無意識にゲームを遊ぶ習慣を作る設計のこと。デイリー任務・ログインボーナスなど運営型タイトルの中核。
+30,総復習,Phase 4: 仕上げ + 全体総復習,574,課題抽出,ゲーム分析,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,現状の問題点・改善余地を整理して言語化する作業のこと。改善提案・企画立案の起点となる分析スキル。
+30,総復習,Phase 4: 仕上げ + 全体総復習,601,戦闘テンポ,バトル設計,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,戦闘中の進行速度・リズムのこと。攻撃・回避・反撃のサイクルが体感する戦闘の質を決める。
+30,総復習,Phase 4: 仕上げ + 全体総復習,636,再現手順,QA / デバッグ,A,batch_058,game_terms_batch_058.pdf,output/pdf/game_terms_batch_058.pdf,バグを再発生させるための具体的な操作手順のこと。バグレポートの中核情報。
+30,総復習,Phase 4: 仕上げ + 全体総復習,755,仕様意図,開発工程,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,仕様書の各項目が『なぜそう書かれているか』の意図のこと。実装判断のブレを防ぐ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,762,Postmortem,開発工程,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,プロジェクト終了後に実施する振り返り会のこと。何が良かった・悪かったを組織として学ぶ。
+30,総復習,Phase 4: 仕上げ + 全体総復習,769,North Star Metric,運営・KPI,A,batch_078,game_terms_batch_078.pdf,output/pdf/game_terms_batch_078.pdf,事業の成功を最も象徴する単一の指標のこと。KPIツリーの頂点に置くべき指標。

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GameTerms — 重要度別索引</title>
+<style>
+  :root {
+    --bg: #0a0e1f;
+    --bg-card: #131a33;
+    --bg-row: #161e3a;
+    --bg-row-alt: #11172e;
+    --bg-row-hover: #1f2a55;
+    --fg: #e6e8f0;
+    --fg-dim: #8a92ad;
+    --border: #232a4a;
+    --accent: #00d4ff;
+    --accent-2: #ff3df0;
+    --imp-A: #ff4757;
+    --imp-B: #ffa502;
+    --imp-C: #7f8c9b;
+    --state-none:      #4a5273;
+    --state-learning:  #5dade2;
+    --state-reviewing: #ffa502;
+    --state-practical: #2ed573;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Segoe UI", sans-serif;
+    font-size: 14px;
+  }
+
+  header {
+    padding: 20px 28px 16px;
+    background: linear-gradient(120deg, #0a0e1f 0%, #1a1f4a 100%);
+    border-bottom: 2px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  header .subtitle { color: var(--fg-dim); font-size: 12px; margin-top: 4px; letter-spacing: 0.05em; }
+
+  nav.pages {
+    padding: 8px 28px;
+    background: #0d1330;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: center;
+    font-size: 12px;
+  }
+  nav.pages a {
+    color: var(--fg-dim); text-decoration: none;
+    padding: 4px 10px; border-radius: 4px; border: 1px solid transparent;
+  }
+  nav.pages a:hover { color: var(--accent); border-color: var(--border); }
+  nav.pages a.current { color: var(--accent); border-color: var(--accent); }
+
+  .toolbar {
+    padding: 14px 28px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .toolbar input[type="text"], .toolbar select {
+    background: #0d1330; color: var(--fg);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 7px 10px; font-size: 13px; font-family: inherit; outline: none;
+  }
+  .toolbar input[type="text"]:focus, .toolbar select:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,212,255,0.15);
+  }
+  .toolbar input[type="text"] { min-width: 240px; }
+  .toolbar label { color: var(--fg-dim); font-size: 12px; margin-right: -4px; }
+  .btn {
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--accent); padding: 6px 14px;
+    border-radius: 4px; font-size: 12px; cursor: pointer;
+    letter-spacing: 0.05em; font-family: inherit;
+  }
+  .btn:hover { background: rgba(0,212,255,0.12); }
+
+  .stats {
+    display: flex; gap: 12px; padding: 12px 28px;
+    background: var(--bg); border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 14px; min-width: 110px;
+  }
+  .stat-card .lbl { color: var(--fg-dim); font-size: 11px; letter-spacing: 0.05em; }
+  .stat-card .val { font-size: 20px; font-weight: 700; margin-top: 2px; }
+  .stat-card.shown .val     { color: var(--accent); }
+  .stat-card.practical .val { color: var(--state-practical); }
+  .stat-card.reviewing .val { color: var(--state-reviewing); }
+  .stat-card.learning .val  { color: var(--state-learning); }
+  .stat-card.none .val      { color: var(--state-none); }
+
+  .content { padding: 12px 28px 60px; }
+
+  .imp-section { margin-bottom: 32px; }
+  .imp-header {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border-left: 6px solid;
+    border-radius: 4px 4px 0 0;
+  }
+  .imp-header.imp-A { border-left-color: var(--imp-A); }
+  .imp-header.imp-B { border-left-color: var(--imp-B); }
+  .imp-header.imp-C { border-left-color: var(--imp-C); }
+  .imp-header .imp-name { font-size: 18px; font-weight: 800; letter-spacing: 0.08em; }
+  .imp-header.imp-A .imp-name { color: var(--imp-A); }
+  .imp-header.imp-B .imp-name { color: var(--imp-B); }
+  .imp-header.imp-C .imp-name { color: var(--imp-C); }
+  .imp-header .imp-tag { color: var(--fg-dim); font-size: 13px; }
+  .imp-header .imp-progress {
+    margin-left: auto; color: var(--fg-dim); font-size: 13px;
+  }
+  .imp-header .imp-progress strong { color: var(--state-practical); font-size: 16px; }
+
+  .imp-progress-bar {
+    height: 10px;
+    background: #0d1330;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 16px 8px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .imp-progress-bar .seg {
+    position: absolute; top: 0; bottom: 0; left: 0; transition: width 0.3s;
+  }
+  .imp-progress-bar .seg-prac  { background: var(--state-practical); z-index: 3; }
+  .imp-progress-bar .seg-rev   { background: var(--state-reviewing); opacity: 0.85; z-index: 2; }
+  .imp-progress-bar .seg-learn { background: var(--state-learning);  opacity: 0.7;  z-index: 1; }
+
+  .cat-subsection { margin: 0 0 18px; }
+  .cat-subhead {
+    padding: 6px 14px;
+    color: var(--fg-dim);
+    font-size: 12px;
+    background: rgba(0,212,255,0.04);
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-subhead .cat-name { color: var(--fg); font-weight: 600; font-size: 13px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th {
+    text-align: left;
+    background: #0e1530; color: var(--fg-dim);
+    font-weight: 600; font-size: 11px; letter-spacing: 0.07em;
+    padding: 8px; border-bottom: 1px solid var(--accent);
+  }
+  tbody tr { background: var(--bg-row); }
+  tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+  tbody tr:hover { background: var(--bg-row-hover); }
+  tbody td {
+    padding: 10px 8px; border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  td.col-id    { color: var(--fg-dim); font-family: "Consolas", monospace; width: 44px; }
+  td.col-term  { font-weight: 700; font-size: 14px; color: var(--fg); width: 170px; }
+  td.col-meaning { color: #d3d8ec; }
+  td.col-batch { width: 130px; }
+  td.col-state { width: 220px; text-align: center; }
+
+  .batch-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: "Consolas", monospace;
+    font-size: 12px;
+    padding: 3px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .batch-link:hover { border-color: var(--accent); background: rgba(0,212,255,0.1); }
+
+  .state-buttons { display: inline-flex; gap: 0; }
+  .state-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--fg-dim);
+    padding: 4px 8px; cursor: pointer; font-family: inherit; font-size: 11px;
+  }
+  .state-btn:first-child { border-radius: 4px 0 0 4px; }
+  .state-btn:last-child  { border-radius: 0 4px 4px 0; }
+  .state-btn + .state-btn { border-left: none; }
+  .state-btn:hover { color: var(--fg); }
+  .state-btn.active.s-none      { background: var(--state-none);      border-color: var(--state-none);      color: #fff; }
+  .state-btn.active.s-learning  { background: var(--state-learning);  border-color: var(--state-learning);  color: #0a0e1f; font-weight: 700; }
+  .state-btn.active.s-reviewing { background: var(--state-reviewing); border-color: var(--state-reviewing); color: #1a1a1a; font-weight: 700; }
+  .state-btn.active.s-practical { background: var(--state-practical); border-color: var(--state-practical); color: #0a0e1f; font-weight: 700; }
+
+  tbody tr.row-state-learning  { background: rgba(93,173,226,0.06); }
+  tbody tr.row-state-reviewing { background: rgba(255,165,2,0.07); }
+  tbody tr.row-state-practical { background: rgba(46,213,115,0.06); }
+
+  .empty { text-align: center; color: var(--fg-dim); padding: 40px; font-style: italic; }
+
+  @media print {
+    nav.pages, .toolbar, .state-buttons, .btn { display: none !important; }
+    html, body { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GAME TERMS — 重要度別索引</h1>
+  <div class="subtitle">A → B → C の順に学ぶための索引。Aから完成させていく流れがおすすめです。</div>
+</header>
+
+<nav class="pages">
+  <span style="color:var(--fg-dim)">📖</span>
+  <a href="study_dashboard.html">学習ダッシュボード</a>
+  <a href="category_index.html">カテゴリ別</a>
+  <a href="importance_index.html" class="current">重要度別</a>
+  <a href="study_plan_A_rank_30days.html">A 30日プラン</a>
+  <a href="terms_master.html">マスター一覧</a>
+</nav>
+
+<div class="toolbar">
+  <input type="text" id="search" placeholder="🔍 用語名・意味で検索...">
+  <label>カテゴリ</label>
+  <select id="filter-cat"><option value="">すべて</option></select>
+  <label>学習状態</label>
+  <select id="filter-state">
+    <option value="">すべて</option>
+    <option value="none">未学習</option>
+    <option value="learning">学習中</option>
+    <option value="reviewing">復習中</option>
+    <option value="practical">実戦で使える</option>
+  </select>
+  <button class="btn" id="btn-reset">リセット</button>
+</div>
+
+<div class="stats">
+  <div class="stat-card shown"><div class="lbl">表示中</div><div class="val" id="stat-shown">0</div></div>
+  <div class="stat-card"><div class="lbl">収録総数</div><div class="val" id="stat-total">0</div></div>
+  <div class="stat-card practical"><div class="lbl">実戦で使える</div><div class="val" id="stat-practical">0</div></div>
+  <div class="stat-card reviewing"><div class="lbl">復習中</div><div class="val" id="stat-reviewing">0</div></div>
+  <div class="stat-card learning"><div class="lbl">学習中</div><div class="val" id="stat-learning">0</div></div>
+  <div class="stat-card none"><div class="lbl">未学習</div><div class="val" id="stat-none">0</div></div>
+</div>
+
+<div class="content" id="content"></div>
+
+<script src="terms_data.js"></script>
+<script>
+  const STATE_KEY_V1 = 'gameterms_learning_state';
+  const STATE_KEY    = 'gameterms_v2';
+  const STATES = ['none', 'learning', 'reviewing', 'practical'];
+  const STATE_LABEL = { none: '未', learning: '学', reviewing: '復', practical: '実' };
+  const STATE_FULL  = { none: '未学習', learning: '学習中', reviewing: '復習中', practical: '実戦で使える' };
+  const IMP_LABEL = { A: '最優先で覚える', B: '知っておくと役立つ', C: '必要になった時に確認' };
+
+  (function migrateV1toV2() {
+    if (localStorage.getItem(STATE_KEY)) return;
+    const v1raw = localStorage.getItem(STATE_KEY_V1);
+    if (!v1raw) return;
+    try {
+      const v1 = JSON.parse(v1raw);
+      const v2 = {};
+      for (const k of Object.keys(v1)) {
+        if (v1[k] === 'reviewing') v2[k] = 'reviewing';
+        else if (v1[k] === 'mastered') v2[k] = 'practical';
+      }
+      localStorage.setItem(STATE_KEY, JSON.stringify(v2));
+    } catch (_) {}
+  })();
+
+  function loadStates() { try { return JSON.parse(localStorage.getItem(STATE_KEY)) || {}; } catch { return {}; } }
+  function saveStates(map) { localStorage.setItem(STATE_KEY, JSON.stringify(map)); }
+  function getState(id, map) { return map[id] || 'none'; }
+  function setState(id, state, map) {
+    if (state === 'none') delete map[id]; else map[id] = state;
+    saveStates(map);
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function pdfPath(batchId) {
+    if (!batchId) return null;
+    const info = window.BATCH_INFO[batchId];
+    return info ? info.pdf : null;
+  }
+
+  const states = loadStates();
+  const search = document.getElementById('search');
+  const filterCat = document.getElementById('filter-cat');
+  const filterState = document.getElementById('filter-state');
+  const btnReset = document.getElementById('btn-reset');
+  const content = document.getElementById('content');
+
+  (function populateCat() {
+    const counts = {};
+    for (const t of window.TERMS) counts[t.category] = (counts[t.category] || 0) + 1;
+    const cats = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(e => e[0]);
+    for (const c of cats) {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c + '（' + counts[c] + '）';
+      filterCat.appendChild(opt);
+    }
+  })();
+
+  function passesFilter(it) {
+    const q = search.value.trim().toLowerCase();
+    if (q) {
+      const hay = (it.term + ' ' + it.shortMeaning + ' ' + (it.usageScene||'') + ' ' + (it.notes||'')).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    if (filterCat.value && it.category !== filterCat.value) return false;
+    if (filterState.value) {
+      const s = getState(it.id, states);
+      if (s !== filterState.value) return false;
+    }
+    return true;
+  }
+
+  function groupByImpThenCat(items) {
+    const out = { A: {}, B: {}, C: {} };
+    for (const it of items) {
+      if (!out[it.importance][it.category]) out[it.importance][it.category] = [];
+      out[it.importance][it.category].push(it);
+    }
+    for (const imp of ['A','B','C']) {
+      for (const cat of Object.keys(out[imp])) {
+        out[imp][cat].sort((a, b) => parseInt(a.id) - parseInt(b.id));
+      }
+    }
+    return out;
+  }
+
+  function render() {
+    const filtered = window.TERMS.filter(passesFilter);
+    document.getElementById('stat-shown').textContent = filtered.length;
+    document.getElementById('stat-total').textContent = window.TERMS.length;
+
+    let cP = 0, cR = 0, cL = 0, cN = 0;
+    for (const it of window.TERMS) {
+      const s = getState(it.id, states);
+      if (s === 'practical') cP++;
+      else if (s === 'reviewing') cR++;
+      else if (s === 'learning') cL++;
+      else cN++;
+    }
+    document.getElementById('stat-practical').textContent = cP;
+    document.getElementById('stat-reviewing').textContent = cR;
+    document.getElementById('stat-learning').textContent  = cL;
+    document.getElementById('stat-none').textContent      = cN;
+
+    if (filtered.length === 0) {
+      content.innerHTML = '<div class="empty">該当する用語がありません</div>';
+      return;
+    }
+
+    const groups = groupByImpThenCat(filtered);
+    const html = [];
+    for (const imp of ['A','B','C']) {
+      const cats = Object.entries(groups[imp]).sort((a, b) => b[1].length - a[1].length);
+      const totalShown = cats.reduce((s, [_, arr]) => s + arr.length, 0);
+      if (totalShown === 0) continue;
+
+      const impAll = window.TERMS.filter(t => t.importance === imp);
+      const impPrac  = impAll.filter(t => getState(t.id, states) === 'practical').length;
+      const impRev   = impAll.filter(t => getState(t.id, states) === 'reviewing').length;
+      const impLearn = impAll.filter(t => getState(t.id, states) === 'learning').length;
+      const pctP = impAll.length ? Math.round(impPrac / impAll.length * 100) : 0;
+      const pctR = impAll.length ? (impPrac + impRev) / impAll.length * 100 : 0;
+      const pctL = impAll.length ? (impPrac + impRev + impLearn) / impAll.length * 100 : 0;
+
+      html.push('<section class="imp-section">');
+      html.push('<div class="imp-header imp-' + imp + '">');
+      html.push('<span class="imp-name">重要度 ' + imp + '</span>');
+      html.push('<span class="imp-tag">' + IMP_LABEL[imp] + '</span>');
+      html.push('<span class="imp-progress">実戦 <strong>' + impPrac + '</strong> / ' + impAll.length + '（' + pctP + '%）</span>');
+      html.push('</div>');
+      html.push('<div class="imp-progress-bar">');
+      html.push('<div class="seg seg-learn" style="width:' + pctL + '%"></div>');
+      html.push('<div class="seg seg-rev" style="width:' + pctR + '%"></div>');
+      html.push('<div class="seg seg-prac" style="width:' + pctP + '%"></div>');
+      html.push('</div>');
+
+      for (const [cat, terms] of cats) {
+        html.push('<div class="cat-subsection">');
+        html.push('<div class="cat-subhead"><span class="cat-name">' + escHtml(cat) + '</span><span style="margin-left:8px">（' + terms.length + '件）</span></div>');
+        html.push('<table><thead><tr>');
+        html.push('<th style="width:44px">ID</th>');
+        html.push('<th style="width:170px">用語</th>');
+        html.push('<th>意味</th>');
+        html.push('<th style="width:130px">PDF</th>');
+        html.push('<th style="width:220px">学習状態</th>');
+        html.push('</tr></thead><tbody>');
+        for (const t of terms) {
+          const s = getState(t.id, states);
+          const pdf = pdfPath(t.batchId);
+          html.push('<tr class="row-state-' + s + '">');
+          html.push('<td class="col-id">' + escHtml(t.id) + '</td>');
+          html.push('<td class="col-term">' + escHtml(t.term) + '</td>');
+          html.push('<td class="col-meaning">' + escHtml(t.shortMeaning) + '</td>');
+          if (pdf) {
+            html.push('<td class="col-batch"><a class="batch-link" href="' + escHtml(pdf) + '" target="_blank">' + escHtml(t.batchId) + '</a></td>');
+          } else {
+            html.push('<td class="col-batch" style="color:var(--fg-dim)">—</td>');
+          }
+          html.push('<td class="col-state">');
+          html.push('<div class="state-buttons" data-id="' + t.id + '">');
+          for (const st of STATES) {
+            const cls = (s === st ? 'active s-' + st : '');
+            html.push('<button class="state-btn ' + cls + '" data-state="' + st + '" title="' + STATE_FULL[st] + '">' + STATE_LABEL[st] + '</button>');
+          }
+          html.push('</div>');
+          html.push('</td>');
+          html.push('</tr>');
+        }
+        html.push('</tbody></table>');
+        html.push('</div>');
+      }
+      html.push('</section>');
+    }
+    content.innerHTML = html.join('');
+  }
+
+  content.addEventListener('click', e => {
+    const btn = e.target.closest('.state-btn');
+    if (!btn) return;
+    const wrap = btn.parentElement;
+    const id = wrap.dataset.id;
+    const newState = btn.dataset.state;
+    setState(id, newState, states);
+    render();
+  });
+
+  search.addEventListener('input', render);
+  filterCat.addEventListener('change', render);
+  filterState.addEventListener('change', render);
+  btnReset.addEventListener('click', () => {
+    search.value = ''; filterCat.value = ''; filterState.value = '';
+    render();
+  });
+
+  render();
+</script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GameTerms — 学習プラン</title>
+<style>
+  :root {
+    --bg: #0a0e1f;
+    --bg-card: #131a33;
+    --bg-row: #161e3a;
+    --bg-row-alt: #11172e;
+    --bg-row-hover: #1f2a55;
+    --fg: #e6e8f0;
+    --fg-dim: #8a92ad;
+    --border: #232a4a;
+    --accent: #00d4ff;
+    --accent-2: #ff3df0;
+    --imp-A: #ff4757;
+    --imp-B: #ffa502;
+    --imp-C: #7f8c9b;
+    --state-none:      #4a5273;
+    --state-reviewing: #ffa502;
+    --state-mastered:  #2ed573;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Segoe UI", sans-serif;
+    font-size: 14px;
+  }
+
+  header {
+    padding: 20px 28px 16px;
+    background: linear-gradient(120deg, #0a0e1f 0%, #1a1f4a 100%);
+    border-bottom: 2px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  header .subtitle { color: var(--fg-dim); font-size: 12px; margin-top: 4px; }
+
+  nav.pages {
+    padding: 8px 28px;
+    background: #0d1330;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: center;
+    font-size: 12px;
+  }
+  nav.pages a {
+    color: var(--fg-dim); text-decoration: none;
+    padding: 4px 10px; border-radius: 4px; border: 1px solid transparent;
+  }
+  nav.pages a:hover { color: var(--accent); border-color: var(--border); }
+  nav.pages a.current { color: var(--accent); border-color: var(--accent); }
+
+  .toolbar {
+    padding: 12px 28px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .toolbar input[type="text"] {
+    background: #0d1330; color: var(--fg);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 7px 10px; font-size: 13px; font-family: inherit; outline: none;
+    min-width: 280px;
+  }
+  .toolbar input[type="text"]:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,212,255,0.15);
+  }
+  .btn {
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--accent); padding: 6px 14px;
+    border-radius: 4px; font-size: 12px; cursor: pointer;
+    letter-spacing: 0.05em; font-family: inherit;
+  }
+  .btn:hover { background: rgba(0,212,255,0.12); }
+  .btn.danger { color: #ff4757; border-color: #ff4757; }
+  .btn.danger:hover { background: rgba(255,71,87,0.12); }
+  .btn.secondary { color: var(--fg-dim); border-color: var(--border); }
+  .btn.secondary:hover { color: var(--fg); border-color: var(--fg-dim); background: rgba(255,255,255,0.04); }
+
+  .content { padding: 18px 28px 60px; display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 1100px) {
+    .content { grid-template-columns: 1.3fr 1fr; }
+    .full-row { grid-column: 1 / -1; }
+  }
+
+  .panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .panel h2 {
+    margin: 0 0 12px; font-size: 15px; letter-spacing: 0.05em;
+    color: var(--accent); font-weight: 700;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .panel h2 .h-meta { color: var(--fg-dim); font-size: 12px; font-weight: 400; letter-spacing: 0; }
+
+  /* ---- Overall progress ---- */
+  .overall {
+    display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
+  }
+  .overall .ring {
+    --pct: 0;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: conic-gradient(var(--state-mastered) calc(var(--pct) * 1%), #1a2148 0);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .overall .ring::before {
+    content: ''; position: absolute; inset: 10px;
+    background: var(--bg-card); border-radius: 50%;
+  }
+  .overall .ring .ring-num {
+    position: relative; z-index: 1;
+    font-size: 28px; font-weight: 800; color: var(--state-mastered);
+  }
+  .overall .ring .ring-num small { font-size: 12px; color: var(--fg-dim); display: block; font-weight: 400; }
+  .overall-stats { display: flex; flex-direction: column; gap: 6px; }
+  .overall-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .overall-row .swatch { width: 12px; height: 12px; border-radius: 2px; }
+  .overall-row .swatch.mastered  { background: var(--state-mastered); }
+  .overall-row .swatch.reviewing { background: var(--state-reviewing); }
+  .overall-row .swatch.none      { background: var(--state-none); }
+  .overall-row .num { font-weight: 700; min-width: 50px; }
+  .overall-row .label { color: var(--fg-dim); }
+
+  /* ---- Importance bars ---- */
+  .imp-bars { display: flex; flex-direction: column; gap: 14px; }
+  .imp-row .imp-row-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .imp-row .imp-tag {
+    display: inline-block; padding: 2px 10px; border-radius: 4px;
+    font-weight: 800; font-size: 13px; color: #fff; min-width: 30px; text-align: center;
+  }
+  .imp-row .imp-tag.A { background: var(--imp-A); }
+  .imp-row .imp-tag.B { background: var(--imp-B); }
+  .imp-row .imp-tag.C { background: var(--imp-C); }
+  .imp-row .imp-text { color: var(--fg-dim); font-size: 12px; }
+  .imp-row .imp-num { margin-left: auto; font-family: "Consolas", monospace; }
+  .imp-row .imp-num strong { color: var(--state-mastered); font-size: 14px; }
+
+  .bar {
+    height: 14px; background: #0d1330; border-radius: 7px; overflow: hidden;
+    border: 1px solid var(--border); position: relative;
+  }
+  .bar .seg-mastered, .bar .seg-reviewing {
+    position: absolute; top: 0; bottom: 0; left: 0;
+    transition: width 0.3s;
+  }
+  .bar .seg-mastered  { background: var(--state-mastered); z-index: 2; }
+  .bar .seg-reviewing { background: var(--state-reviewing); opacity: 0.6; z-index: 1; }
+
+  /* ---- Category list ---- */
+  .cat-list { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; padding-right: 6px; }
+  .cat-list::-webkit-scrollbar { width: 8px; }
+  .cat-list::-webkit-scrollbar-thumb { background: #1f2a55; border-radius: 4px; }
+  .cat-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
+  .cat-row .cat-line { display: flex; justify-content: space-between; font-size: 12px; }
+  .cat-row .cat-name { color: var(--fg); font-weight: 600; }
+  .cat-row .cat-num  { color: var(--fg-dim); font-family: "Consolas", monospace; }
+  .cat-row .bar { width: 100%; }
+  .cat-row .cat-bar-wrap { grid-column: 1 / -1; }
+
+  /* ---- Lists (recommended / reviewing) ---- */
+  .term-list { display: flex; flex-direction: column; gap: 0; max-height: 480px; overflow-y: auto; padding-right: 6px; }
+  .term-list::-webkit-scrollbar { width: 8px; }
+  .term-list::-webkit-scrollbar-thumb { background: #1f2a55; border-radius: 4px; }
+  .term-item {
+    display: grid; grid-template-columns: 36px 1fr auto auto;
+    gap: 8px; align-items: center;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .term-item:hover { background: var(--bg-row-hover); }
+  .term-item .id { color: var(--fg-dim); font-family: "Consolas", monospace; font-size: 11px; }
+  .term-item .term-info .name { font-weight: 700; color: var(--fg); }
+  .term-item .term-info .meaning { font-size: 11px; color: var(--fg-dim); margin-top: 2px; }
+  .term-item .term-info .meta { font-size: 10px; color: var(--fg-dim); margin-top: 1px; }
+  .imp-pill {
+    display: inline-block; min-width: 22px; text-align: center;
+    border-radius: 3px; font-size: 10px; font-weight: 800;
+    padding: 2px 4px; color: #fff;
+  }
+  .imp-pill.A { background: var(--imp-A); }
+  .imp-pill.B { background: var(--imp-B); }
+  .imp-pill.C { background: var(--imp-C); }
+
+  .state-buttons { display: inline-flex; }
+  .state-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--fg-dim);
+    padding: 3px 7px; cursor: pointer; font-family: inherit; font-size: 10px;
+  }
+  .state-btn:first-child { border-radius: 3px 0 0 3px; }
+  .state-btn:last-child  { border-radius: 0 3px 3px 0; }
+  .state-btn + .state-btn { border-left: none; }
+  .state-btn:hover { color: var(--fg); }
+  .state-btn.active.s-none      { background: var(--state-none);      border-color: var(--state-none);      color: #fff; }
+  .state-btn.active.s-reviewing { background: var(--state-reviewing); border-color: var(--state-reviewing); color: #1a1a1a; font-weight: 700; }
+  .state-btn.active.s-mastered  { background: var(--state-mastered);  border-color: var(--state-mastered);  color: #0a0e1f; font-weight: 700; }
+
+  .empty-mini { color: var(--fg-dim); padding: 18px; text-align: center; font-style: italic; font-size: 12px; }
+
+  /* ---- Print queue ---- */
+  .batch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+  .batch-card {
+    background: #0d1330; border: 1px solid var(--border); border-radius: 5px;
+    padding: 8px 10px; font-size: 12px;
+  }
+  .batch-card .batch-id { color: var(--accent); font-family: "Consolas", monospace; font-weight: 700; }
+  .batch-card .batch-meta { color: var(--fg-dim); font-size: 11px; margin-top: 2px; }
+  .batch-card a { color: var(--state-mastered); text-decoration: none; font-size: 11px; }
+  .batch-card a:hover { text-decoration: underline; }
+
+  /* ---- Search results ---- */
+  .search-results {
+    max-height: 320px; overflow-y: auto;
+    background: #0d1330; border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-top: 6px;
+  }
+  .search-results:empty { display: none; }
+  .search-results .term-item { padding: 6px 10px; }
+
+  /* ---- Tools panel ---- */
+  .tools-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .io-textarea {
+    width: 100%; min-height: 80px;
+    background: #0d1330; color: var(--fg);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 8px 10px; font-family: "Consolas", monospace; font-size: 11px;
+    margin-top: 8px; outline: none; resize: vertical;
+  }
+  .io-textarea:focus { border-color: var(--accent); }
+  .io-msg { font-size: 11px; color: var(--fg-dim); margin-top: 6px; min-height: 14px; }
+  .io-msg.ok  { color: var(--state-mastered); }
+  .io-msg.err { color: #ff4757; }
+
+  .footer-info {
+    color: var(--fg-dim); font-size: 11px; padding: 12px 28px 24px;
+    border-top: 1px solid var(--border); margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GAME TERMS — 学習プラン</h1>
+  <div class="subtitle">どこから学ぶか、どこまで覚えたか、どのPDFを印刷するか — をまとめる司令塔ページ</div>
+</header>
+
+<nav class="pages">
+  <span style="color:var(--fg-dim)">📖</span>
+  <a href="study_plan.html" class="current">学習プラン</a>
+  <a href="category_index.html">カテゴリ別</a>
+  <a href="importance_index.html">重要度別</a>
+  <a href="terms_master.html">マスター一覧</a>
+</nav>
+
+<div class="toolbar">
+  <input type="text" id="search" placeholder="🔍 用語名・意味で全788語を横断検索...">
+  <button class="btn secondary" id="btn-clear-search">クリア</button>
+</div>
+
+<div id="search-results-wrap" style="padding: 8px 28px 0;"></div>
+
+<div class="content">
+
+  <!-- Overall + importance -->
+  <div class="panel full-row">
+    <h2>全体進捗 <span class="h-meta">localStorageに自動保存されます</span></h2>
+    <div class="overall">
+      <div class="ring" id="ring">
+        <div class="ring-num">
+          <span id="ring-pct">0</span>%
+          <small><span id="ring-num">0</span> / <span id="ring-total">0</span></small>
+        </div>
+      </div>
+      <div class="overall-stats">
+        <div class="overall-row"><span class="swatch mastered"></span><span class="num" id="ov-mastered">0</span><span class="label">習得済み</span></div>
+        <div class="overall-row"><span class="swatch reviewing"></span><span class="num" id="ov-reviewing">0</span><span class="label">復習中</span></div>
+        <div class="overall-row"><span class="swatch none"></span><span class="num" id="ov-none">0</span><span class="label">未学習</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 18px;">
+      <h2 style="margin-top: 8px;">重要度別の進捗</h2>
+      <div class="imp-bars" id="imp-bars"></div>
+    </div>
+  </div>
+
+  <!-- Recommended next -->
+  <div class="panel">
+    <h2>次に学ぶおすすめ <span class="h-meta">未学習のA → B → C 順 / 上位30件</span></h2>
+    <div class="term-list" id="recommended"></div>
+  </div>
+
+  <!-- Currently reviewing -->
+  <div class="panel">
+    <h2>復習中の用語 <span class="h-meta">いま定着させたい対象</span></h2>
+    <div class="term-list" id="reviewing-list"></div>
+  </div>
+
+  <!-- Category breakdown -->
+  <div class="panel full-row">
+    <h2>カテゴリ別の進捗 <span class="h-meta">緑=習得 / 橙=復習中</span></h2>
+    <div class="cat-list" id="cat-list"></div>
+  </div>
+
+  <!-- Print queue -->
+  <div class="panel full-row">
+    <h2>印刷キュー <span class="h-meta">復習中の用語が含まれるバッチPDF — 印刷推奨リスト</span></h2>
+    <div class="batch-grid" id="print-queue"></div>
+  </div>
+
+  <!-- Tools -->
+  <div class="panel full-row">
+    <h2>ツール <span class="h-meta">学習状態のエクスポート/インポート/リセット</span></h2>
+    <div class="tools-row">
+      <button class="btn" id="btn-export">エクスポート</button>
+      <button class="btn" id="btn-import">インポート反映</button>
+      <button class="btn danger" id="btn-reset">全リセット</button>
+    </div>
+    <textarea class="io-textarea" id="io-text" placeholder="エクスポート結果がここに出ます。別端末に持っていく時はコピー、戻す時はここに貼り付けて『インポート反映』を押してください。"></textarea>
+    <div class="io-msg" id="io-msg"></div>
+  </div>
+
+</div>
+
+<div class="footer-info">
+  GameTerms / 全 <span id="info-total">0</span> 語 / バッチ <span id="info-batches">0</span> 個 / データ生成日 <span id="info-gen"></span>
+</div>
+
+<script src="terms_data.js"></script>
+<script>
+  const STATE_KEY = 'gameterms_learning_state';
+  const STATES = ['none', 'reviewing', 'mastered'];
+  const STATE_LABEL = { none: '未', reviewing: '復習中', mastered: '習得' };
+  const IMP_LABEL = { A: '最優先で覚える', B: '知っておくと役立つ', C: '必要になった時に確認' };
+
+  function loadStates() { try { return JSON.parse(localStorage.getItem(STATE_KEY)) || {}; } catch { return {}; } }
+  function saveStates(map) { localStorage.setItem(STATE_KEY, JSON.stringify(map)); }
+  function getState(id, map) { return map[id] || 'none'; }
+  function setState(id, state, map) {
+    if (state === 'none') delete map[id]; else map[id] = state;
+    saveStates(map);
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function pdfPath(batchId) {
+    if (!batchId) return null;
+    const info = window.BATCH_INFO[batchId];
+    return info ? info.pdf : null;
+  }
+
+  const states = loadStates();
+
+  const ringEl = document.getElementById('ring');
+  const ringPct = document.getElementById('ring-pct');
+  const ringNum = document.getElementById('ring-num');
+  const ringTotal = document.getElementById('ring-total');
+  const ovMastered = document.getElementById('ov-mastered');
+  const ovReviewing = document.getElementById('ov-reviewing');
+  const ovNone = document.getElementById('ov-none');
+  const impBars = document.getElementById('imp-bars');
+  const recommendedEl = document.getElementById('recommended');
+  const reviewingEl = document.getElementById('reviewing-list');
+  const catListEl = document.getElementById('cat-list');
+  const printQueueEl = document.getElementById('print-queue');
+
+  const search = document.getElementById('search');
+  const btnClearSearch = document.getElementById('btn-clear-search');
+  const searchResultsWrap = document.getElementById('search-results-wrap');
+
+  function renderTermItem(t) {
+    const s = getState(t.id, states);
+    const pdf = pdfPath(t.batchId);
+    const html = [];
+    html.push('<div class="term-item">');
+    html.push('<span class="id">' + escHtml(t.id) + '</span>');
+    html.push('<div class="term-info">');
+    html.push('<div class="name">' + escHtml(t.term) + '</div>');
+    html.push('<div class="meaning">' + escHtml(t.shortMeaning) + '</div>');
+    html.push('<div class="meta">' + escHtml(t.category) + (pdf ? ' · <a href="' + escHtml(pdf) + '" target="_blank" style="color:var(--accent)">' + escHtml(t.batchId) + '.pdf</a>' : '') + '</div>');
+    html.push('</div>');
+    html.push('<span class="imp-pill ' + t.importance + '">' + t.importance + '</span>');
+    html.push('<div class="state-buttons" data-id="' + t.id + '">');
+    for (const st of STATES) {
+      const cls = (s === st ? 'active s-' + st : '');
+      html.push('<button class="state-btn ' + cls + '" data-state="' + st + '">' + STATE_LABEL[st] + '</button>');
+    }
+    html.push('</div>');
+    html.push('</div>');
+    return html.join('');
+  }
+
+  function renderOverall() {
+    const all = window.TERMS;
+    const mastered = all.filter(t => getState(t.id, states) === 'mastered').length;
+    const reviewing = all.filter(t => getState(t.id, states) === 'reviewing').length;
+    const none = all.length - mastered - reviewing;
+    const pct = Math.round(mastered / all.length * 100);
+    ringEl.style.setProperty('--pct', pct);
+    ringPct.textContent = pct;
+    ringNum.textContent = mastered;
+    ringTotal.textContent = all.length;
+    ovMastered.textContent = mastered;
+    ovReviewing.textContent = reviewing;
+    ovNone.textContent = none;
+  }
+
+  function renderImp() {
+    const html = [];
+    for (const imp of ['A','B','C']) {
+      const all = window.TERMS.filter(t => t.importance === imp);
+      const mastered = all.filter(t => getState(t.id, states) === 'mastered').length;
+      const reviewing = all.filter(t => getState(t.id, states) === 'reviewing').length;
+      const mPct = all.length ? mastered / all.length * 100 : 0;
+      const rPct = all.length ? (mastered + reviewing) / all.length * 100 : 0;
+      html.push('<div class="imp-row">');
+      html.push('<div class="imp-row-head">');
+      html.push('<span class="imp-tag ' + imp + '">' + imp + '</span>');
+      html.push('<span class="imp-text">' + IMP_LABEL[imp] + '</span>');
+      html.push('<span class="imp-num"><strong>' + mastered + '</strong> / ' + all.length + '（' + Math.round(mPct) + '%）</span>');
+      html.push('</div>');
+      html.push('<div class="bar">');
+      html.push('<div class="seg-reviewing" style="width:' + rPct + '%"></div>');
+      html.push('<div class="seg-mastered" style="width:' + mPct + '%"></div>');
+      html.push('</div>');
+      html.push('</div>');
+    }
+    impBars.innerHTML = html.join('');
+  }
+
+  function renderRecommended() {
+    const order = { A: 0, B: 1, C: 2 };
+    const items = window.TERMS
+      .filter(t => getState(t.id, states) === 'none')
+      .sort((a, b) => order[a.importance] - order[b.importance] || parseInt(a.id) - parseInt(b.id))
+      .slice(0, 30);
+    if (items.length === 0) {
+      recommendedEl.innerHTML = '<div class="empty-mini">未学習の用語はありません — 全788語を学び切りました 🎉</div>';
+      return;
+    }
+    recommendedEl.innerHTML = items.map(renderTermItem).join('');
+  }
+
+  function renderReviewing() {
+    const items = window.TERMS
+      .filter(t => getState(t.id, states) === 'reviewing')
+      .sort((a, b) => parseInt(a.id) - parseInt(b.id));
+    if (items.length === 0) {
+      reviewingEl.innerHTML = '<div class="empty-mini">復習中の用語はまだありません。<br>「次に学ぶおすすめ」から「復習中」ボタンを押してリストに加えてみましょう。</div>';
+      return;
+    }
+    reviewingEl.innerHTML = items.map(renderTermItem).join('');
+  }
+
+  function renderCategoryList() {
+    const counts = {};
+    for (const t of window.TERMS) {
+      const c = t.category;
+      if (!counts[c]) counts[c] = { total: 0, mastered: 0, reviewing: 0 };
+      counts[c].total++;
+      const s = getState(t.id, states);
+      if (s === 'mastered') counts[c].mastered++;
+      else if (s === 'reviewing') counts[c].reviewing++;
+    }
+    const cats = Object.entries(counts).sort((a, b) => b[1].total - a[1].total);
+    const html = [];
+    for (const [cat, stat] of cats) {
+      const mPct = stat.total ? stat.mastered / stat.total * 100 : 0;
+      const rPct = stat.total ? (stat.mastered + stat.reviewing) / stat.total * 100 : 0;
+      html.push('<div class="cat-row">');
+      html.push('<div class="cat-bar-wrap">');
+      html.push('<div class="cat-line">');
+      html.push('<span class="cat-name">' + escHtml(cat) + '</span>');
+      html.push('<span class="cat-num">' + stat.mastered + ' / ' + stat.total + '（' + Math.round(mPct) + '%）</span>');
+      html.push('</div>');
+      html.push('<div class="bar">');
+      html.push('<div class="seg-reviewing" style="width:' + rPct + '%"></div>');
+      html.push('<div class="seg-mastered" style="width:' + mPct + '%"></div>');
+      html.push('</div>');
+      html.push('</div>');
+      html.push('</div>');
+    }
+    catListEl.innerHTML = html.join('');
+  }
+
+  function renderPrintQueue() {
+    // batches that contain any reviewing term
+    const reviewingByBatch = {};
+    for (const t of window.TERMS) {
+      if (getState(t.id, states) === 'reviewing' && t.batchId) {
+        if (!reviewingByBatch[t.batchId]) reviewingByBatch[t.batchId] = [];
+        reviewingByBatch[t.batchId].push(t);
+      }
+    }
+    const batches = Object.entries(reviewingByBatch).sort((a, b) => a[0].localeCompare(b[0]));
+    if (batches.length === 0) {
+      printQueueEl.innerHTML = '<div class="empty-mini" style="grid-column:1/-1">復習中の用語がありません。「復習中」にした用語があるバッチが、ここに印刷推奨リストとして表示されます。</div>';
+      return;
+    }
+    const html = [];
+    for (const [batchId, terms] of batches) {
+      const info = window.BATCH_INFO[batchId];
+      if (!info) continue;
+      html.push('<div class="batch-card">');
+      html.push('<div class="batch-id">' + escHtml(batchId) + '</div>');
+      html.push('<div class="batch-meta">復習中 ' + terms.length + '件 / 全' + info.termCount + '件 · ' + info.pageCount + 'ページ</div>');
+      html.push('<a href="' + escHtml(info.pdf) + '" target="_blank">→ PDFを開く</a>');
+      html.push('</div>');
+    }
+    printQueueEl.innerHTML = html.join('');
+  }
+
+  function renderSearchResults() {
+    const q = search.value.trim().toLowerCase();
+    if (!q) { searchResultsWrap.innerHTML = ''; return; }
+    const items = window.TERMS.filter(t => {
+      const hay = (t.term + ' ' + t.shortMeaning + ' ' + (t.usageScene||'') + ' ' + (t.notes||'') + ' ' + t.category).toLowerCase();
+      return hay.includes(q);
+    }).slice(0, 50);
+    if (items.length === 0) {
+      searchResultsWrap.innerHTML = '<div class="empty-mini" style="background:var(--bg-card);border-radius:6px;border:1px solid var(--border)">該当なし</div>';
+      return;
+    }
+    const html = ['<div class="panel" style="padding:12px 14px"><h2>検索結果 <span class="h-meta">' + items.length + '件' + (items.length === 50 ? '（上位50件まで）' : '') + '</span></h2><div class="search-results">'];
+    for (const t of items) html.push(renderTermItem(t));
+    html.push('</div></div>');
+    searchResultsWrap.innerHTML = html.join('');
+  }
+
+  function renderAll() {
+    renderOverall();
+    renderImp();
+    renderRecommended();
+    renderReviewing();
+    renderCategoryList();
+    renderPrintQueue();
+    renderSearchResults();
+  }
+
+  document.body.addEventListener('click', e => {
+    const btn = e.target.closest('.state-btn');
+    if (!btn) return;
+    const wrap = btn.parentElement;
+    const id = wrap.dataset.id;
+    if (!id) return;
+    const newState = btn.dataset.state;
+    setState(id, newState, states);
+    renderAll();
+  });
+
+  search.addEventListener('input', renderSearchResults);
+  btnClearSearch.addEventListener('click', () => { search.value = ''; renderSearchResults(); });
+
+  // Tools
+  const ioText = document.getElementById('io-text');
+  const ioMsg = document.getElementById('io-msg');
+  function setMsg(t, kind) { ioMsg.textContent = t; ioMsg.className = 'io-msg ' + (kind || ''); }
+
+  document.getElementById('btn-export').addEventListener('click', () => {
+    ioText.value = JSON.stringify(states, null, 2);
+    ioText.select();
+    setMsg('エクスポートしました。コピーして別端末に貼り付ければそのまま使えます。', 'ok');
+  });
+
+  document.getElementById('btn-import').addEventListener('click', () => {
+    try {
+      const v = ioText.value.trim();
+      if (!v) { setMsg('インポートする内容を上に貼り付けてください。', 'err'); return; }
+      const parsed = JSON.parse(v);
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('オブジェクト形式ではありません');
+      let added = 0, skipped = 0;
+      const newStates = {};
+      for (const [k, v2] of Object.entries(parsed)) {
+        if (typeof k === 'string' && (v2 === 'reviewing' || v2 === 'mastered')) {
+          newStates[k] = v2; added++;
+        } else { skipped++; }
+      }
+      // Replace
+      Object.keys(states).forEach(k => delete states[k]);
+      Object.assign(states, newStates);
+      saveStates(states);
+      renderAll();
+      setMsg(`インポート完了: ${added}件反映 / ${skipped}件スキップ`, 'ok');
+    } catch (e) {
+      setMsg('JSON解析エラー: ' + e.message, 'err');
+    }
+  });
+
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    if (!confirm('全788語の学習状態をリセットします。この操作は元に戻せません。続行しますか？')) return;
+    Object.keys(states).forEach(k => delete states[k]);
+    saveStates(states);
+    renderAll();
+    setMsg('リセットしました。', 'ok');
+  });
+
+  // Footer info
+  document.getElementById('info-total').textContent = window.TERMS.length;
+  document.getElementById('info-batches').textContent = Object.keys(window.BATCH_INFO).length;
+  document.getElementById('info-gen').textContent = window.GENERATED_AT || '-';
+
+  renderAll();
+</script>
+</body>
+</html>
