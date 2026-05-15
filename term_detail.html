@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameTerms — 用語詳細</title>
+<style>
+  :root {
+    --bg: #0a0e1f;
+    --bg-card: #131a33;
+    --bg-row: #161e3a;
+    --bg-row-alt: #11172e;
+    --bg-row-hover: #1f2a55;
+    --bg-input: #0d1330;
+    --fg: #e6e8f0;
+    --fg-dim: #8a92ad;
+    --border: #232a4a;
+    --accent: #00d4ff;
+    --accent-2: #ff3df0;
+    --imp-A: #ff4757;
+    --imp-B: #ffa502;
+    --imp-C: #7f8c9b;
+    --state-none:      #4a5273;
+    --state-learning:  #5dade2;
+    --state-reviewing: #ffa502;
+    --state-practical: #2ed573;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Meiryo", "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  header {
+    padding: 20px 28px 16px;
+    background: linear-gradient(120deg, #0a0e1f 0%, #1a1f4a 100%);
+    border-bottom: 2px solid var(--accent);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  header .subtitle { color: var(--fg-dim); font-size: 12px; margin-top: 4px; letter-spacing: 0.05em; }
+
+  nav.pages {
+    padding: 8px 28px;
+    background: #0d1330;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    font-size: 12px;
+  }
+  nav.pages a {
+    color: var(--fg-dim); text-decoration: none;
+    padding: 4px 10px; border-radius: 4px; border: 1px solid transparent;
+  }
+  nav.pages a:hover { color: var(--accent); border-color: var(--border); }
+  nav.pages a.current { color: var(--accent); border-color: var(--accent); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 18px 28px 60px; }
+
+  .breadcrumb {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+  .breadcrumb a {
+    color: var(--accent); text-decoration: none;
+    padding: 4px 10px; border: 1px solid var(--border); border-radius: 4px;
+    display: inline-block;
+  }
+  .breadcrumb a:hover { background: rgba(0,212,255,0.08); border-color: var(--accent); }
+
+  /* ==== Term info card ==== */
+  .term-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 22px;
+  }
+  .term-id {
+    font-family: "Consolas", monospace;
+    color: var(--fg-dim);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .term-name {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    color: var(--fg);
+    letter-spacing: 0.04em;
+  }
+  .term-badges { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 3px; letter-spacing: 0.05em;
+  }
+  .badge-cat {
+    color: var(--accent); border: 1px solid var(--border);
+    background: rgba(0,212,255,0.06);
+  }
+  .badge-imp { color: #fff; }
+  .badge-imp.A { background: var(--imp-A); }
+  .badge-imp.B { background: var(--imp-B); }
+  .badge-imp.C { background: var(--imp-C); }
+  .term-meta-grid {
+    display: grid; grid-template-columns: 110px 1fr; gap: 10px 18px;
+    margin-top: 8px;
+  }
+  .term-meta-grid dt { color: var(--fg-dim); font-size: 12px; letter-spacing: 0.05em; padding-top: 2px; }
+  .term-meta-grid dd { margin: 0; color: #d3d8ec; font-size: 14px; }
+  .term-meta-grid dd.empty { color: var(--fg-dim); font-style: italic; }
+
+  /* ==== Note section ==== */
+  .note-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px 24px;
+  }
+  .note-section h2 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+  .note-section .note-hint {
+    color: var(--fg-dim); font-size: 12px; margin-bottom: 14px;
+  }
+
+  .note-toolbar {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 12px; align-items: center;
+  }
+  .note-toolbar .spacer { flex: 1; }
+  .note-toolbar .updated {
+    font-size: 11px; color: var(--fg-dim);
+    font-family: "Consolas", monospace;
+  }
+
+  .btn {
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--accent); padding: 6px 14px;
+    border-radius: 4px; font-size: 12px; cursor: pointer;
+    letter-spacing: 0.05em; font-family: inherit;
+    transition: background 0.12s, color 0.12s;
+  }
+  .btn:hover { background: rgba(0,212,255,0.12); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn.save {
+    color: var(--state-practical); border-color: var(--state-practical);
+  }
+  .btn.save:hover { background: rgba(46,213,115,0.12); }
+  .btn.download {
+    color: var(--accent); border-color: var(--accent);
+  }
+  .btn.danger {
+    color: var(--fg-dim); border-color: var(--border);
+  }
+  .btn.danger:hover { color: var(--imp-A); border-color: var(--imp-A); background: rgba(255,71,87,0.08); }
+  .btn.upload {
+    color: var(--state-learning); border-color: var(--state-learning);
+  }
+  .btn.upload:hover { background: rgba(93,173,226,0.12); }
+
+  .tabs {
+    display: flex; gap: 0; border-bottom: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+  .tab-btn {
+    background: transparent; border: none; border-bottom: 2px solid transparent;
+    color: var(--fg-dim); font-family: inherit; font-size: 13px;
+    padding: 8px 18px; cursor: pointer; letter-spacing: 0.05em;
+  }
+  .tab-btn:hover { color: var(--fg); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .pane { display: none; }
+  .pane.active { display: block; }
+
+  textarea#note-editor {
+    width: 100%;
+    min-height: 360px;
+    background: var(--bg-input); color: var(--fg);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 14px 16px;
+    font-family: "Consolas", "Menlo", monospace; font-size: 13px;
+    line-height: 1.6;
+    outline: none; resize: vertical;
+    transition: border-color 0.1s, box-shadow 0.1s;
+  }
+  textarea#note-editor:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,212,255,0.12); }
+  textarea#note-editor.drag-over { border-color: var(--state-practical); background: rgba(46,213,115,0.05); }
+
+  /* preview pane */
+  #preview {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 22px;
+    min-height: 360px;
+    color: #d3d8ec;
+    line-height: 1.75;
+    font-size: 14px;
+  }
+  #preview.empty {
+    color: var(--fg-dim); font-style: italic;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  #preview h1, #preview h2, #preview h3, #preview h4 {
+    color: var(--fg);
+    margin-top: 1.4em; margin-bottom: 0.5em;
+    border-bottom: 1px solid var(--border); padding-bottom: 4px;
+  }
+  #preview h1 { font-size: 22px; }
+  #preview h2 { font-size: 18px; color: var(--accent); }
+  #preview h3 { font-size: 16px; }
+  #preview h4 { font-size: 14px; border-bottom: none; color: var(--fg-dim); }
+  #preview p { margin: 0.6em 0; }
+  #preview a { color: var(--accent); text-decoration: underline; }
+  #preview code {
+    background: #0a0e1f; color: var(--state-reviewing);
+    padding: 2px 6px; border-radius: 3px; font-size: 0.9em;
+    font-family: "Consolas", "Menlo", monospace;
+  }
+  #preview pre {
+    background: #0a0e1f; color: var(--fg);
+    padding: 12px 14px; border-radius: 4px;
+    overflow-x: auto; border: 1px solid var(--border);
+  }
+  #preview pre code { background: transparent; padding: 0; color: inherit; }
+  #preview ul, #preview ol { padding-left: 1.5em; }
+  #preview li { margin: 0.2em 0; }
+  #preview blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 4px 14px; margin: 0.8em 0;
+    background: rgba(0,212,255,0.04);
+    color: var(--fg-dim);
+  }
+  #preview table {
+    border-collapse: collapse; margin: 0.8em 0;
+    border: 1px solid var(--border);
+  }
+  #preview th, #preview td {
+    border: 1px solid var(--border); padding: 6px 12px; text-align: left;
+  }
+  #preview th { background: var(--bg-row); color: var(--fg); }
+  #preview hr { border: none; border-top: 1px solid var(--border); margin: 1.4em 0; }
+  #preview img { max-width: 100%; height: auto; }
+
+  .msg {
+    margin-top: 12px;
+    min-height: 16px;
+    font-size: 12px;
+    color: var(--fg-dim);
+  }
+  .msg.ok  { color: var(--state-practical); }
+  .msg.err { color: var(--imp-A); }
+
+  /* ==== Error state ==== */
+  .not-found {
+    background: var(--bg-card);
+    border: 1px solid var(--imp-A);
+    border-radius: 8px;
+    padding: 40px 32px;
+    text-align: center;
+  }
+  .not-found h2 {
+    color: var(--imp-A); margin: 0 0 8px; font-size: 20px;
+  }
+  .not-found p {
+    color: var(--fg-dim); margin: 8px 0 0;
+  }
+  .not-found a {
+    color: var(--accent); text-decoration: none; font-weight: 700;
+  }
+  .not-found a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header { padding: 16px 14px 12px; }
+    header h1 { font-size: 18px; }
+    nav.pages { padding: 8px 14px; gap: 8px; }
+    main { padding: 14px 14px 50px; }
+    .term-card { padding: 16px 18px; }
+    .term-name { font-size: 22px; }
+    .term-meta-grid { grid-template-columns: 1fr; gap: 4px 0; }
+    .term-meta-grid dt { padding-top: 8px; }
+    .note-section { padding: 16px 16px 20px; }
+    .note-toolbar .updated { flex-basis: 100%; text-align: right; order: 99; }
+  }
+</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+</head>
+<body>
+
+<header>
+  <h1>GAME TERMS — 用語詳細</h1>
+  <div class="subtitle">学習中の気づき・添削履歴をMarkdownで記録できます（ブラウザに自動保存）。</div>
+</header>
+
+<nav class="pages">
+  <span style="color:var(--fg-dim)">📖</span>
+  <a href="study_dashboard.html">学習ダッシュボード</a>
+  <a href="category_index.html">カテゴリ別</a>
+  <a href="importance_index.html">重要度別</a>
+  <a href="study_plan_A_rank_30days.html">A 30日プラン</a>
+  <a href="terms_master.html">マスター一覧</a>
+</nav>
+
+<main>
+  <div class="breadcrumb">
+    <a href="study_dashboard.html">← 学習ダッシュボードに戻る</a>
+  </div>
+
+  <div id="content"></div>
+</main>
+
+<script src="terms_data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const NOTE_KEY_PREFIX = 'gameterms_note_';
+  const UPDATED_KEY_PREFIX = 'gameterms_note_updated_';
+  const MAX_FILE_BYTES = 1024 * 1024; // 1 MB
+
+  function getParam(name) {
+    const m = new URLSearchParams(location.search);
+    return m.get(name);
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function formatDate(iso) {
+    if (!iso) return '';
+    try {
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return iso;
+      const pad = (n) => String(n).padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    } catch (_) { return iso; }
+  }
+  function sanitizeFilename(s) {
+    return String(s).replace(/[\\/:*?"<>| -]/g, '_').slice(0, 80) || 'note';
+  }
+
+  const id = getParam('id');
+  const contentEl = document.getElementById('content');
+
+  if (!id) {
+    showNotFound('用語IDが指定されていません。');
+    return;
+  }
+  const term = (window.TERMS || []).find(t => t.id === id);
+  if (!term) {
+    showNotFound(`ID "${escHtml(id)}" の用語が見つかりません。`);
+    return;
+  }
+
+  document.title = `${term.term} — GameTerms 用語詳細`;
+  renderDetail(term);
+
+  function showNotFound(message) {
+    contentEl.innerHTML = `
+      <div class="not-found">
+        <h2>用語が見つかりません</h2>
+        <p>${escHtml(message)}</p>
+        <p style="margin-top:14px"><a href="study_dashboard.html">学習ダッシュボードに戻る</a></p>
+      </div>
+    `;
+  }
+
+  function renderDetail(term) {
+    const noteKey = NOTE_KEY_PREFIX + term.id;
+    const updatedKey = UPDATED_KEY_PREFIX + term.id;
+    const initialNote = localStorage.getItem(noteKey) || '';
+    const initialUpdated = localStorage.getItem(updatedKey) || '';
+
+    contentEl.innerHTML = `
+      <section class="term-card">
+        <div class="term-id">ID ${escHtml(term.id)}</div>
+        <h2 class="term-name">${escHtml(term.term)}</h2>
+        <div class="term-badges">
+          <span class="badge badge-cat">${escHtml(term.category || '—')}</span>
+          ${term.importance ? `<span class="badge badge-imp ${escHtml(term.importance)}">重要度 ${escHtml(term.importance)}</span>` : ''}
+        </div>
+        <dl class="term-meta-grid">
+          <dt>意味</dt>
+          <dd>${term.shortMeaning ? escHtml(term.shortMeaning) : '<span class="empty">未記載</span>'}</dd>
+          <dt>使う場面</dt>
+          <dd>${term.usageScene ? escHtml(term.usageScene) : '<span class="empty">未記載</span>'}</dd>
+          <dt>補足</dt>
+          <dd>${term.notes ? escHtml(term.notes) : '<span class="empty">なし</span>'}</dd>
+        </dl>
+      </section>
+
+      <section class="note-section">
+        <h2>📝 添削履歴・学習メモ</h2>
+        <div class="note-hint">この用語に関する添削履歴やメモをMarkdownで記録できます。内容はこのブラウザのlocalStorageに保存されます（端末間での同期はされません）。</div>
+
+        <div class="note-toolbar">
+          <input type="file" id="file-input" accept=".md,.txt,text/markdown,text/plain" hidden>
+          <button class="btn upload" id="btn-upload" type="button">📤 ファイル読み込み</button>
+          <button class="btn save" id="btn-save" type="button">💾 保存</button>
+          <button class="btn download" id="btn-download" type="button">⬇ ダウンロード</button>
+          <button class="btn danger" id="btn-delete" type="button">🗑 削除</button>
+          <span class="spacer"></span>
+          <span class="updated" id="updated">${initialUpdated ? '最終保存: ' + escHtml(formatDate(initialUpdated)) : '未保存'}</span>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" id="tab-edit" role="tab" aria-selected="true" aria-controls="pane-edit">編集</button>
+          <button class="tab-btn" id="tab-preview" role="tab" aria-selected="false" aria-controls="pane-preview">プレビュー</button>
+        </div>
+
+        <div class="pane active" id="pane-edit" role="tabpanel" aria-labelledby="tab-edit">
+          <textarea id="note-editor"
+                    placeholder="ここにMarkdownで添削履歴・学習メモを入力してください。&#10;&#10;例:&#10;## 2026-05-15 提出&#10;- 良かった点: …&#10;- 指摘: …&#10;&#10;## 改善案&#10;- …"
+                    aria-label="添削履歴のMarkdownエディタ"></textarea>
+        </div>
+
+        <div class="pane" id="pane-preview" role="tabpanel" aria-labelledby="tab-preview" aria-hidden="true"></div>
+
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      </section>
+    `;
+
+    const editor = document.getElementById('note-editor');
+    const previewEl = document.getElementById('pane-preview');
+    const tabEdit = document.getElementById('tab-edit');
+    const tabPreview = document.getElementById('tab-preview');
+    const paneEdit = document.getElementById('pane-edit');
+    const paneView = document.getElementById('pane-preview');
+    const updatedEl = document.getElementById('updated');
+    const msgEl = document.getElementById('msg');
+    const fileInput = document.getElementById('file-input');
+    const btnUpload = document.getElementById('btn-upload');
+    const btnSave = document.getElementById('btn-save');
+    const btnDownload = document.getElementById('btn-download');
+    const btnDelete = document.getElementById('btn-delete');
+
+    editor.value = initialNote;
+    refreshDeleteAvailability();
+
+    function setMsg(text, kind) {
+      msgEl.textContent = text || '';
+      msgEl.className = 'msg ' + (kind || '');
+      if (text && kind === 'ok') {
+        setTimeout(() => { if (msgEl.textContent === text) { msgEl.textContent = ''; msgEl.className = 'msg'; } }, 4000);
+      }
+    }
+
+    function refreshDeleteAvailability() {
+      const has = localStorage.getItem(noteKey) != null;
+      btnDelete.disabled = !has;
+    }
+
+    function activateTab(which) {
+      const editActive = which === 'edit';
+      tabEdit.classList.toggle('active', editActive);
+      tabPreview.classList.toggle('active', !editActive);
+      tabEdit.setAttribute('aria-selected', editActive ? 'true' : 'false');
+      tabPreview.setAttribute('aria-selected', editActive ? 'false' : 'true');
+      paneEdit.classList.toggle('active', editActive);
+      paneView.classList.toggle('active', !editActive);
+      paneEdit.setAttribute('aria-hidden', editActive ? 'false' : 'true');
+      paneView.setAttribute('aria-hidden', editActive ? 'true' : 'false');
+      if (!editActive) renderPreview();
+      else editor.focus();
+    }
+
+    function renderPreview() {
+      const md = editor.value;
+      if (!md.trim()) {
+        previewEl.className = 'pane active empty';
+        previewEl.innerHTML = '（内容がありません。「編集」タブでMarkdownを入力してください。）';
+        return;
+      }
+      previewEl.className = 'pane active';
+      let html;
+      try {
+        if (typeof marked === 'undefined') throw new Error('marked が読み込まれていません');
+        if (typeof marked.parse === 'function') html = marked.parse(md, { breaks: true });
+        else html = marked(md, { breaks: true });
+      } catch (e) {
+        html = '<p style="color:var(--imp-A)">プレビューの描画に失敗しました: ' + escHtml(e.message) + '</p><pre>' + escHtml(md) + '</pre>';
+      }
+      previewEl.innerHTML = html;
+    }
+
+    tabEdit.addEventListener('click', () => activateTab('edit'));
+    tabPreview.addEventListener('click', () => activateTab('preview'));
+    tabEdit.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') tabPreview.focus(); });
+    tabPreview.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') tabEdit.focus(); });
+
+    btnUpload.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', () => {
+      const f = fileInput.files && fileInput.files[0];
+      if (!f) return;
+      loadFile(f);
+      fileInput.value = '';
+    });
+
+    function loadFile(file) {
+      if (file.size > MAX_FILE_BYTES) {
+        alert(`ファイルが大きすぎます（${(file.size/1024).toFixed(1)} KB）。1MB以下のファイルを指定してください。`);
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        editor.value = String(reader.result || '');
+        activateTab('edit');
+        setMsg(`「${file.name}」を読み込みました。「保存」を押すとブラウザに保存されます。`, 'ok');
+      };
+      reader.onerror = () => setMsg('ファイルの読み込みに失敗しました。', 'err');
+      reader.readAsText(file);
+    }
+
+    // Drag & drop onto the textarea
+    ['dragenter', 'dragover'].forEach(ev => {
+      editor.addEventListener(ev, (e) => { e.preventDefault(); editor.classList.add('drag-over'); });
+    });
+    ['dragleave', 'drop'].forEach(ev => {
+      editor.addEventListener(ev, (e) => { e.preventDefault(); editor.classList.remove('drag-over'); });
+    });
+    editor.addEventListener('drop', (e) => {
+      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) loadFile(f);
+    });
+
+    btnSave.addEventListener('click', () => {
+      const v = editor.value;
+      try {
+        if (v === '') {
+          if (!confirm('内容が空のまま保存します。よろしいですか？\n（削除したい場合は「🗑 削除」を使ってください）')) return;
+        }
+        const nowIso = new Date().toISOString();
+        localStorage.setItem(noteKey, v);
+        localStorage.setItem(updatedKey, nowIso);
+        updatedEl.textContent = '最終保存: ' + formatDate(nowIso);
+        refreshDeleteAvailability();
+        setMsg('保存しました。', 'ok');
+      } catch (e) {
+        if (e && (e.name === 'QuotaExceededError' || e.code === 22)) {
+          setMsg('保存に失敗しました: ブラウザの保存容量が不足しています。', 'err');
+        } else {
+          setMsg('保存に失敗しました: ' + (e && e.message || e), 'err');
+        }
+      }
+    });
+
+    btnDownload.addEventListener('click', () => {
+      const v = editor.value;
+      if (!v.trim()) { setMsg('ダウンロードする内容がありません。', 'err'); return; }
+      const filename = sanitizeFilename(term.term) + '_添削履歴.md';
+      const blob = new Blob([v], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setMsg(`「${filename}」をダウンロードしました。`, 'ok');
+    });
+
+    btnDelete.addEventListener('click', () => {
+      if (!localStorage.getItem(noteKey)) return;
+      if (!confirm(`「${term.term}」の添削履歴を削除します。\nこの操作は元に戻せません。続行しますか？`)) return;
+      localStorage.removeItem(noteKey);
+      localStorage.removeItem(updatedKey);
+      editor.value = '';
+      updatedEl.textContent = '未保存';
+      refreshDeleteAvailability();
+      if (tabPreview.classList.contains('active')) renderPreview();
+      setMsg('削除しました。', 'ok');
+    });
+
+    // Ctrl/Cmd + S to save
+    editor.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+        e.preventDefault();
+        btnSave.click();
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

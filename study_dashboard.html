@@ -197,6 +197,23 @@
   }
   td.col-id    { color: var(--fg-dim); font-family: "Consolas", monospace; width: 44px; }
   td.col-term  { font-weight: 700; font-size: 14px; color: var(--fg); width: 160px; }
+  td.col-term .term-link {
+    color: var(--fg); text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: color 0.1s, border-color 0.1s;
+  }
+  td.col-term .term-link:hover,
+  td.col-term .term-link:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    outline: none;
+  }
+  td.col-term .note-indicator {
+    display: inline-block; margin-left: 6px; font-size: 12px;
+    line-height: 1; vertical-align: baseline;
+    color: var(--state-practical);
+  }
+  td.col-term .note-indicator[title] { cursor: help; }
   td.col-cat   { width: 130px; color: var(--fg-dim); font-size: 12px; }
   td.col-imp   { width: 50px; text-align: center; }
   td.col-meaning { color: #d3d8ec; }
@@ -322,6 +339,8 @@
     <option value="reviewing">復習中</option>
     <option value="practical">実戦で使える</option>
   </select>
+  <!-- TODO: 添削履歴フィルタ -->
+
   <label>並び順</label>
   <select id="sort-by">
     <option value="id">ID 昇順</option>
@@ -396,6 +415,10 @@
     if (!batchId) return null;
     const info = window.BATCH_INFO[batchId];
     return info ? info.pdf : null;
+  }
+  const NOTE_KEY_PREFIX = 'gameterms_note_';
+  function hasNote(id) {
+    return localStorage.getItem(NOTE_KEY_PREFIX + id) != null;
   }
 
   const states = loadStates();
@@ -549,7 +572,8 @@
       const pdf = pdfPath(t.batchId);
       html.push('<tr class="row-state-' + s + '">');
       html.push('<td class="col-id">' + escHtml(t.id) + '</td>');
-      html.push('<td class="col-term">' + escHtml(t.term) + '</td>');
+      const noteBadge = hasNote(t.id) ? '<span class="note-indicator" title="添削履歴あり" aria-label="添削履歴あり">📄</span>' : '';
+      html.push('<td class="col-term"><a class="term-link" href="term_detail.html?id=' + encodeURIComponent(t.id) + '">' + escHtml(t.term) + '</a>' + noteBadge + '</td>');
       html.push('<td class="col-cat">' + escHtml(t.category) + '</td>');
       html.push('<td class="col-imp"><span class="imp-pill ' + t.importance + '">' + t.importance + '</span></td>');
       html.push('<td class="col-meaning">' + escHtml(t.shortMeaning) + '</td>');
