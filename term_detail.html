@@ -356,7 +356,7 @@
     } catch (_) { return iso; }
   }
   function sanitizeFilename(s) {
-    return String(s).replace(/[\\/:*?"<>| -]/g, '_').slice(0, 80) || 'note';
+    return String(s).replace(/[-\\/:*?"<>|\s]/g, '_').slice(0, 80) || 'note';
   }
 
   const id = getParam('id');
