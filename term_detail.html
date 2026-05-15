@@ -406,10 +406,20 @@
   const ATTACH_KEY_PREFIX = 'gameterms_attachments_';
   const MAX_FILE_BYTES = 1024 * 1024; // 1 MB
 
-  function isHtmlFile(file) {
+  function detectAttachmentKind(file) {
     const name = (file.name || '').toLowerCase();
-    if (name.endsWith('.html') || name.endsWith('.htm')) return true;
-    return file.type === 'text/html';
+    const type = (file.type || '').toLowerCase();
+    if (name.endsWith('.html') || name.endsWith('.htm') || type === 'text/html') return 'html';
+    if (name.endsWith('.pdf') || type === 'application/pdf') return 'pdf';
+    return null;
+  }
+  function attachmentMimeType(att) {
+    if (att.kind === 'pdf') return 'application/pdf';
+    if (att.type && /^(application\/pdf|text\/html)/.test(att.type)) return att.type;
+    return 'text/html;charset=utf-8';
+  }
+  function attachmentTypeLabel(att) {
+    return att.kind === 'pdf' ? '📄 PDF' : '🌐 HTML';
   }
   function loadAttachments(termId) {
     try {
@@ -505,7 +515,7 @@
         <div class="note-hint">この用語に関する添削履歴やメモをMarkdownで記録できます。内容はこのブラウザのlocalStorageに保存されます（端末間での同期はされません）。</div>
 
         <div class="note-toolbar">
-          <input type="file" id="file-input" accept=".md,.markdown,.txt,.html,.htm,text/markdown,text/plain,text/html" hidden>
+          <input type="file" id="file-input" accept=".html,.htm,.pdf,text/html,application/pdf" hidden>
           <button class="btn upload" id="btn-upload" type="button">📤 ファイル読み込み</button>
           <button class="btn save" id="btn-save" type="button">💾 保存</button>
           <button class="btn download" id="btn-download" type="button">⬇ ダウンロード</button>
@@ -528,10 +538,10 @@
         <div class="pane" id="pane-preview" role="tabpanel" aria-labelledby="tab-preview" aria-hidden="true"></div>
 
         <div class="attachments-section">
-          <h3>📎 HTML添付</h3>
-          <div class="attachments-hint">HTMLファイル(.html / .htm)をアップロードするとボタンとして保存され、押すと新しいタブで開きます。</div>
+          <h3>📎 添付ファイル</h3>
+          <div class="attachments-hint">HTML(.html / .htm)または PDF(.pdf)をアップロードするとボタンとして保存され、押すと新しいタブで開きます。1ファイル1MBまで。</div>
           <div class="attachments-list" id="attachments-list"></div>
-          <div class="attachments-empty" id="attachments-empty">まだ添付されたHTMLはありません。</div>
+          <div class="attachments-empty" id="attachments-empty">まだ添付ファイルはありません。</div>
         </div>
 
         <div class="msg" id="msg" role="status" aria-live="polite"></div>
@@ -617,34 +627,29 @@
     });
 
     function loadFile(file) {
+      const kind = detectAttachmentKind(file);
+      if (!kind) {
+        alert('HTML(.html / .htm)または PDF(.pdf)のみアップロードできます。');
+        return;
+      }
       if (file.size > MAX_FILE_BYTES) {
         alert(`ファイルが大きすぎます（${(file.size/1024).toFixed(1)} KB）。1MB以下のファイルを指定してください。`);
         return;
       }
       const reader = new FileReader();
-      if (isHtmlFile(file)) {
-        reader.onload = () => {
-          const content = String(reader.result || '');
-          addAttachment({
-            id: genAttachId(),
-            name: file.name,
-            size: file.size,
-            type: file.type || 'text/html',
-            addedAt: new Date().toISOString(),
-            content,
-          });
-        };
-        reader.onerror = () => setMsg('HTMLの読み込みに失敗しました。', 'err');
-        reader.readAsText(file);
-      } else {
-        reader.onload = () => {
-          editor.value = String(reader.result || '');
-          activateTab('edit');
-          setMsg(`「${file.name}」を読み込みました。「保存」を押すとブラウザに保存されます。`, 'ok');
-        };
-        reader.onerror = () => setMsg('ファイルの読み込みに失敗しました。', 'err');
-        reader.readAsText(file);
-      }
+      reader.onload = () => {
+        addAttachment({
+          id: genAttachId(),
+          name: file.name,
+          size: file.size,
+          type: file.type || (kind === 'pdf' ? 'application/pdf' : 'text/html'),
+          kind,
+          addedAt: new Date().toISOString(),
+          dataUrl: String(reader.result || ''),
+        });
+      };
+      reader.onerror = () => setMsg('ファイルの読み込みに失敗しました。', 'err');
+      reader.readAsDataURL(file);
     }
 
     function addAttachment(att) {
@@ -670,15 +675,28 @@
     }
 
     function openAttachment(att) {
-      const blob = new Blob([att.content], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      document.body.appendChild(a); a.click(); a.remove();
-      // Keep the blob alive long enough for the new tab to load it
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      const launch = (blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      };
+      if (att.dataUrl) {
+        // Convert the stored data: URL back to a Blob so we can open via blob: URL
+        // (browsers handle blob: URLs more consistently in new tabs than long data: URLs).
+        fetch(att.dataUrl)
+          .then(r => r.blob())
+          .then(launch)
+          .catch(err => setMsg('開けませんでした: ' + err.message, 'err'));
+      } else if (att.content != null) {
+        // Legacy attachments stored raw text (HTML). Wrap and open.
+        launch(new Blob([att.content], { type: attachmentMimeType(att) }));
+      } else {
+        setMsg('この添付には開ける内容がありません。', 'err');
+      }
     }
 
     function renderAttachments() {
@@ -694,7 +712,8 @@
       list.forEach((att) => {
         const item = document.createElement('div');
         item.className = 'attach-item';
-        const meta = formatBytes(att.size || (att.content ? att.content.length : 0)) +
+        const sizeNum = att.size || (att.dataUrl ? att.dataUrl.length : (att.content ? att.content.length : 0));
+        const meta = attachmentTypeLabel(att) + ' ・ ' + formatBytes(sizeNum) +
                      ' ・ 追加: ' + (att.addedAt ? formatDate(att.addedAt) : '—');
         item.innerHTML =
           '<button class="attach-open" type="button" data-act="open">▶ 開く</button>' +
